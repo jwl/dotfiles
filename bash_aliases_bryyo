@@ -1,0 +1,13 @@
+# Aliases
+
+# ssh aliases
+alias sshrobots="ssh jobias@dili.dreamhost.com"
+alias sshrobots2="ssh jobias@robotslovebacon.net"
+alias sshnorfair="ssh jwl@norfair.dyndns.org"
+
+# todo alias
+alias t="todo.sh -a"
+
+# start up tail to monitor systemlog
+alias slog="tail -f /var/log/syslog"
+
