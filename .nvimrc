@@ -29,6 +29,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mdlerch/vim-tungsten'
+Plugin 'morhetz/gruvbox'
+Plugin 'romainl/Apprentice'
 
 " ===== END VUNDLE BUNDLES =========
 call vundle#end()
@@ -135,7 +143,7 @@ set laststatus=2
 " GVIM Window settings
 if has("gui_running")
     set lines=40
-    set columns=84
+    set columns=80
 endif
 
 
@@ -178,10 +186,10 @@ filetype on
 
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
-autocmd FileType make set noexpandtab shiftwidth=8
+autocmd FileType make set noexpandtab shiftwidth=4
 
 " Oh, and let's keep textwidth for all text files to 78 chars
-autocmd FileType text setlocal textwidth=78
+autocmd FileType text setlocal textwidth=80
 
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
@@ -201,6 +209,11 @@ set incsearch
 " page down with <Space> and page up with -
 noremap <Space> <PageDown>
 noremap - <PageUp>
+
+" Change <C-e> and <C-y> from scrolling down/up 1 line to 3 lines, so we don't
+" have to keep hitting it over and over as much
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 " in normal mode F2 will save the file
 " nmap <F2> :w<CR>
@@ -262,6 +275,11 @@ let g:ctrlp_working_path_mode = 'r'
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
 
+" Binding to clear CtrlP cache so that on next invocation of CtrlP it will
+" rescan all directories. Useful if a new file has been added since the last
+" time CtrlP was used
+nmap <leader>rr :CtrlPClearAllCaches<cr>
+
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
@@ -280,10 +298,13 @@ let g:buffergator_viewport_split_policy = 'R'
 " I want my own keymappings
 let g:buffergator_suppress_keymaps = 1
 
+" for some reason, using BuffergatorMruCyclePrev and BuffergatorMruCycleNext
+" leads to unusual behavior once more than a few (3?) tabs are open. Switching
+" to :bnext and :bprev to see if that leads to more consistent behavior
 " Go to previous buffer open
-nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+nmap <leader>jj :bprev<cr>
 " Go to next buffer open
-nmap <leader>kk :BuffergatorMruCycleNext<cr>
+nmap <leader>kk :bnext<cr>
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
 " <comma> then T for new tab
@@ -305,27 +326,44 @@ let g:miniBufExplModSelTarget = 1
 
 
 " --------
-" Enabling C-V for paste, C-C for copy in visual mode
-" nmap <C-V> "*p
-" imap <C-V> <ESC><C-V>i
-" vmap <C-C> "+y
-
-
-" --------
 "  enable system clipboard for vim, allowing copy/paste to and from the system
 "  clipboard
 set clipboard=unnamedplus
 
+"---------
+
+
+"---------
+" Syntastic options
+" Disable syntastic unless manually invoked for files that end in .html or
+" .cpp
+let g:syntastic_mode_map={ 'mode': 'active',
+\ 'active_filetypes': [],
+\ 'passive_filetypes': ['html', 'cpp', 'h'] }
+
+
+"------- end Syntastic options
+
+
+
+
 " --------
-"  Enabling C-Tab and S-C-Tab for moving back and forth tabs, C-T for new tab
-" :nmap <C-S-tab> :bp<CR>
-" :nmap <C-tab> :bn<CR>
-" :map <C-S-tab> :bp<CR>
-" :map <C-tab> :bn<CR>
-" :imap <C-S-tab> <Esc>:bp<CR>i
-" :imap <C-tab> <Esc>:bn<CR>i
-" :nmap <C-t> :enew<CR>
-" :imap <C-t> <Esc>:enew<CR>
+"  YouCompleteMe settings (vim auto-completion plugin)
+"  references:
+"  * http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+"  * http://vimawesome.com/plugin/youcompleteme
+"  * https://github.com/neovim/neovim/issues/1315
+"  * https://github.com/Valloric/YouCompleteMe
+
+" Auto-remove preview window after exiting insert mode
+" (see: https://valloric.github.io/YouCompleteMe/)
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" Alternate options: 
+" auto-close after selecting a completion string
+" g:ycm_autoclose_preview_window_after_completion = 1
+" Don't open the preview window at all
+" set completeopt-=preview   
+" g:ycm_add_preview_to_completeopt = 0
 
 
-
+" --------- End YouCompleteMe (YCM) options
