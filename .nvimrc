@@ -37,6 +37,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'mdlerch/vim-tungsten'
 Plugin 'morhetz/gruvbox'
 Plugin 'romainl/Apprentice'
+Plugin 'scrooloose/nerdcommenter'
 
 " ===== END VUNDLE BUNDLES =========
 call vundle#end()
