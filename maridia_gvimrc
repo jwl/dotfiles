@@ -1,0 +1,12 @@
+" set gfn=DejaVu\ Sans\ Mono\ 9
+" Remember to use the Powerline fonts or else you will get font rendering
+" artifacts
+set gfn=Source\ Code\ Pro\ for\ Powerline\ Regular\ 9
+
+set encoding=utf-8
+
+" GVIM Window settings
+if has("gui_running")
+    set lines=40
+    set columns=84
+endif
