@@ -54,7 +54,9 @@ filetype plugin indent on
 " undo buffers and marks are preservede while the buffer is open.
 set hidden
 
+" Map/remap the leader keybinding
 :let mapleader = ","
+" :let mapleader = ";"
 
 " set ms-windows behavior, see :help :behave to see exactly what this does
 behave mswin
@@ -69,7 +71,8 @@ if has('gui_running')
 else
 	set background=dark
 endif
-colorscheme kalisi
+" colorscheme kalisi
+colorscheme gruvbox
 
 " if this is gvim, turn off toolbar by default
 :set guioptions-=T
@@ -159,14 +162,14 @@ endif
 " set nowrap " turn off line wrapping
 set formatoptions=l " turn on word wrapping
 set lbr " make sure word wrapping doesn't break in middle of words
-set shiftwidth=4 " how much to auto-indent by
-set ts=4 " sets tab stops to whatever for text input
+set shiftwidth=2 " how much to auto-indent by
+set ts=2 " sets tab stops to whatever for text input
 "set expandtab " turn tab keypresses into spaces (set this or the one below, NOT BOTH)
 set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
 set smartindent
-set tabstop=4 " forces tabs to be 4 spaces
+set tabstop=2 " forces tabs to be X spaces
 
 
 " the below settings are for python coding; autoindent, tabstop=4,
@@ -187,7 +190,7 @@ filetype on
 
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
-autocmd FileType make set noexpandtab shiftwidth=4
+autocmd FileType make set noexpandtab shiftwidth=2
 
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
@@ -238,8 +241,9 @@ let g:NERDTreeWinSize=45
 
 
 
-" Map alt-comma to Escape in insert mode
+" Map new keybind to Escape in insert mode
 imap <A-,> <Esc>
+" imap <A-.> <Esc>
 
 " Turn off highlighting by double-tapping Escape
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
@@ -304,8 +308,10 @@ let g:buffergator_suppress_keymaps = 1
 " to :bnext and :bprev to see if that leads to more consistent behavior
 " Go to previous buffer open
 nmap <leader>jj :bprev<cr>
+nmap <leader>hh :bprev<cr>
 " Go to next buffer open
 nmap <leader>kk :bnext<cr>
+nmap <leader>ll :bnext<cr>
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
 " <comma> then T for new tab
@@ -315,14 +321,6 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " End Buffergator settings
 " -----------------
-
-" --------
-" MiniBufExplorer keybindings,
-" ctrl-arrows and ctrl-[h,j,k,l] will navigate between open buffers/tabs
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 
 
 
@@ -340,7 +338,7 @@ set clipboard=unnamedplus
 " .cpp
 let g:syntastic_mode_map={ 'mode': 'active',
 \ 'active_filetypes': [],
-\ 'passive_filetypes': ['html', 'cpp', 'h'] }
+\ 'passive_filetypes': ['html','c', 'cpp', 'h'] }
 
 
 "------- end Syntastic options
@@ -359,11 +357,22 @@ let g:syntastic_mode_map={ 'mode': 'active',
 " Auto-remove preview window after exiting insert mode
 " (see: https://valloric.github.io/YouCompleteMe/)
 let g:ycm_autoclose_preview_window_after_insertion = 1
-" Alternate options: 
+
+" Global white/black list for ycm_extra_conf.py configs.
+" See https://github.com/Valloric/YouCompleteMe
+let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
+
+
+" Disable confirmation dialog asking if you want to load the ycm_extra_conf.py
+" EVERY time you launch vim (which is excessive IMHO)
+let g:ycm_confirm_extra_conf = 1
+" let g:ycm_confirm_extra_conf = 0
+
+" Alternate options:
 " auto-close after selecting a completion string
 " g:ycm_autoclose_preview_window_after_completion = 1
 " Don't open the preview window at all
-" set completeopt-=preview   
+" set completeopt-=preview
 " g:ycm_add_preview_to_completeopt = 0
 
 
