@@ -1,19 +1,49 @@
-set nocompatible
+" -----------------
+" Windows specific config
 
-" isolate neovim bundles and plugins from vim's
-if has('nvim')
-	let s:editor_root=expand("~/.nvim")
-else
-	let s:editor_root=expand("~/.vim")
-endif
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+
+
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
+
+" -----------------
+" End Windows specific config
+
+
 
 
 " Begin Vundle configuration, see: https://github.com/gmarik/Vundle.vim
 " set the runtime path to include Vundle and initialize
 filetype off " required for vundle. Turn it back on after vundle config is over
 " set rtp+=s:editor_root . '/bundle/vundle/'
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/vimfiles/bundle/Vundle.vim/
+call vundle#begin('~/vimfiles/')
 
 " ===== START VUNDLE BUNDLES =======
 " let Vundle manage Vundle, required
@@ -67,9 +97,9 @@ set backspace=indent,eol,start
 " Set default color scheme
 set t_Co=256
 if has('gui_running')
-	set background=dark
+set background=dark
 else
-	set background=dark
+set background=dark
 endif
 " colorscheme kalisi
 colorscheme gruvbox
@@ -119,7 +149,7 @@ set pastetoggle=<F2>
 
 " turn on syntax highlighting
 if has('syntax')
-	syntax on
+syntax on
 endif
 
 " briefly flash the matching brace/parenthesis/bracket when you type
@@ -146,8 +176,8 @@ set laststatus=2
 " ---------
 " GVIM Window settings
 if has("gui_running")
-    set lines=40
-    set columns=80
+	set lines=40
+	set columns=80
 endif
 
 
@@ -214,10 +244,6 @@ imap <A-,> <Esc>
 " imap <A-.> <Esc>
 imap <A-k> <Esc>
 
-
-" Alternate mappings to escape so it's easier to get out of insert mode
-" currently just using <Esc> and <C-[>
-
 " page down with <Space> and page up with -
 noremap <Space> <PageDown>
 noremap - <PageUp>
@@ -248,9 +274,14 @@ let g:NERDTreeWinSize=45
 " -----------------
 
 
+" -----------------
+" Highlight settings
 
 " Turn off highlighting by double-tapping Escape
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
+" End Highlight settings
+" -----------------
 
 
 " -----------------
@@ -364,7 +395,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Global white/black list for ycm_extra_conf.py configs.
 " See https://github.com/Valloric/YouCompleteMe
-let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
+" let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
 
 
 " Disable confirmation dialog asking if you want to load the ycm_extra_conf.py

@@ -2,9 +2,9 @@ set nocompatible
 
 " isolate neovim bundles and plugins from vim's
 if has('nvim')
-	let s:editor_root=expand("~/.nvim")
+let s:editor_root=expand("~/.nvim")
 else
-	let s:editor_root=expand("~/.vim")
+let s:editor_root=expand("~/.vim")
 endif
 
 
@@ -67,9 +67,9 @@ set backspace=indent,eol,start
 " Set default color scheme
 set t_Co=256
 if has('gui_running')
-	set background=dark
+set background=dark
 else
-	set background=dark
+set background=dark
 endif
 " colorscheme kalisi
 colorscheme gruvbox
@@ -119,7 +119,7 @@ set pastetoggle=<F2>
 
 " turn on syntax highlighting
 if has('syntax')
-	syntax on
+syntax on
 endif
 
 " briefly flash the matching brace/parenthesis/bracket when you type
@@ -146,8 +146,8 @@ set laststatus=2
 " ---------
 " GVIM Window settings
 if has("gui_running")
-    set lines=40
-    set columns=80
+	set lines=40
+	set columns=80
 endif
 
 
@@ -209,6 +209,10 @@ set incsearch
 
 " Alternate mappings to escape so it's easier to get out of insert mode
 " currently just using <Esc> and <C-[>
+" Map new keybind to Escape in insert mode
+imap <A-,> <Esc>
+" imap <A-.> <Esc>
+imap <A-k> <Esc>
 
 " page down with <Space> and page up with -
 noremap <Space> <PageDown>
@@ -240,13 +244,14 @@ let g:NERDTreeWinSize=45
 " -----------------
 
 
-
-" Map new keybind to Escape in insert mode
-imap <A-,> <Esc>
-" imap <A-.> <Esc>
+" -----------------
+" Highlight settings
 
 " Turn off highlighting by double-tapping Escape
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
+" End Highlight settings
+" -----------------
 
 
 " -----------------
