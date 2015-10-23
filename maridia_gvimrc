@@ -5,8 +5,8 @@ set gfn=Source\ Code\ Pro\ for\ Powerline\ Regular\ 9
 
 set encoding=utf-8
 
-" GVIM Window settings
+" GVIM Window settingS
 if has("gui_running")
-    set lines=40
-    set columns=84
+    set lines=39
+    set columns=86
 endif
