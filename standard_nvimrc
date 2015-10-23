@@ -172,15 +172,7 @@ set smartindent
 set tabstop=2 " forces tabs to be X spaces
 
 
-" the below settings are for python coding; autoindent, tabstop=4,
-" softtabstop=4, expandtab and shiftwidth=4. This means vim will
-" autoindent, use indents which are 4 whitespace characters, indent and
-" un-indent in 4 whitespace increments, expand tabs into spaces.
-"set autoindent
-"set tabstop=4
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
+
 
 " Treat lines with quote mark as comments
 set comments+=b:\"
@@ -188,12 +180,19 @@ set comments+=b:\"
 " Enable filetype detection
 filetype on
 
+
+" Custom formatting for specific filetypes:
+
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
 autocmd FileType make set noexpandtab shiftwidth=2
 
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
+
+" setup vim so that python files automatically use PEP8-compliant indentation
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+
 
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
