@@ -209,7 +209,7 @@ set incsearch
 " Alternate mappings to escape so it's easier to get out of insert mode
 " currently just using <Esc> and <C-[>
 " Map new keybind to Escape in insert mode
-imap <A-,> <Esc>
+imap <A-i> <Esc>
 " imap <A-.> <Esc>
 imap <A-k> <Esc>
 
