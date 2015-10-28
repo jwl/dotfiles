@@ -38,6 +38,7 @@ Plugin 'mdlerch/vim-tungsten'
 Plugin 'morhetz/gruvbox'
 Plugin 'romainl/Apprentice'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'tmhedberg/SimpylFold'
 
 " ===== END VUNDLE BUNDLES =========
 call vundle#end()
@@ -155,6 +156,22 @@ endif
 
 
 
+" Treat lines with quote mark as comments
+set comments+=b:\"
+
+" Enable filetype detection
+filetype on
+
+" Let's show the best match so far as we type
+set incsearch
+
+" Show whitespace and tabs
+:set list
+:set listchars=tab:>-,trail:~,extends:>,precedes:<
+
+
+
+" -----------------
 " Tabs and formatting
 
 " indents of 4 characters (NO SPACES), smart and auto-indent are on,
@@ -171,16 +188,11 @@ set autoindent
 set smartindent
 set tabstop=2 " forces tabs to be X spaces
 
+" End Tabs and formatting
+" -----------------
 
 
-
-" Treat lines with quote mark as comments
-set comments+=b:\"
-
-" Enable filetype detection
-filetype on
-
-
+" -----------------
 " Custom formatting for specific filetypes:
 
 " So, since we need actual tab characters in make files, we probably
@@ -191,19 +203,31 @@ autocmd FileType make set noexpandtab shiftwidth=2
 autocmd FileType text setlocal textwidth=80
 
 " setup vim so that python files automatically use PEP8-compliant indentation
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
+"au BufNewFile,BufRead *.py
+    "\ set tabstop=4
+    "\ set softtabstop=4
+    "\ set shiftwidth=4
+    "\ set textwidth=79
+    "\ set expandtab
+    "\ set autoindent
+    "\ set fileformat=un
 
+" formatting for full stack development
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
 
-" Let's show the best match so far as we type
-set incsearch
 
+" End custom formatting for specific filetypes
 " --------
 
-
+" -----------------
 " Keystrokes -- Moving around
 
 " Alternate mappings to escape so it's easier to get out of insert mode
@@ -214,13 +238,18 @@ imap <A-i> <Esc>
 imap <A-k> <Esc>
 
 " page down with <Space> and page up with -
-noremap <Space> <PageDown>
-noremap - <PageUp>
+" noremap <Space> <PageDown>
+" noremap - <PageUp>
 
 " Change <C-e> and <C-y> from scrolling down/up 1 line to 3 lines, so we don't
 " have to keep hitting it over and over as much
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+
+" End Keystrokes
+" -----------------
+
+
 
 " in normal mode F2 will save the file
 " nmap <F2> :w<CR>
@@ -250,6 +279,22 @@ let g:NERDTreeWinSize=45
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " End Highlight settings
+" -----------------
+
+
+" -----------------
+" Code folding
+" see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#.Vi9-CN7uzXY.reddit
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with spacebar
+noremap <space> za
+
+
+" End Code Folding settings
 " -----------------
 
 
