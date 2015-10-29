@@ -228,7 +228,7 @@ let filetype_pal = "pascal"
 " --------
 
 " -----------------
-" Keystrokes -- Moving around
+" Keystrokes
 
 " Alternate mappings to escape so it's easier to get out of insert mode
 " currently just using <Esc> and <C-[>
@@ -238,6 +238,10 @@ imap <A-i> <Esc>
 "imap <S-space> <Esc>
 imap jk <Esc>
 imap kj <Esc>
+
+" Remap semicolon (;) to function as colon (:), saving me from holding down
+" Shift everytime I want to execute a command like save (:w)
+:nmap ; :
 
 " page down with <Space> and page up with -
 " noremap <Space> <PageDown>
