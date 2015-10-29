@@ -235,7 +235,9 @@ let filetype_pal = "pascal"
 " Map new keybind to Escape in insert mode
 imap <A-i> <Esc>
 " imap <A-.> <Esc>
-imap <A-k> <Esc>
+"imap <S-space> <Esc>
+imap jk <Esc>
+imap kj <Esc>
 
 " page down with <Space> and page up with -
 " noremap <Space> <PageDown>
