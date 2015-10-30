@@ -2,47 +2,41 @@ set nocompatible
 
 " isolate neovim bundles and plugins from vim's
 if has('nvim')
-let s:editor_root=expand("~/.nvim")
+	let s:editor_root=expand("~/.nvim")
 else
-let s:editor_root=expand("~/.vim")
+	let s:editor_root=expand("~/.vim")
 endif
 
 
-" Begin Vundle configuration, see: https://github.com/gmarik/Vundle.vim
-" set the runtime path to include Vundle and initialize
-filetype off " required for vundle. Turn it back on after vundle config is over
-" set rtp+=s:editor_root . '/bundle/vundle/'
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
 
-" ===== START VUNDLE BUNDLES =======
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'freeo/vim-kalisi'
-Plugin 'croaky/vim-colors-github'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-surround'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'Raimondi/delimitMate'
-Plugin 'mdlerch/vim-tungsten'
-Plugin 'morhetz/gruvbox'
-Plugin 'romainl/Apprentice'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tmhedberg/SimpylFold'
+call plug#begin()
 
-" ===== END VUNDLE BUNDLES =========
-call vundle#end()
-filetype plugin indent on
+" ===== START Plug BUNDLES =======
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'freeo/vim-kalisi'
+Plug 'croaky/vim-colors-github'
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'nanotech/jellybeans.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Raimondi/delimitMate'
+Plug 'mdlerch/vim-tungsten'
+Plug 'morhetz/gruvbox'
+Plug 'romainl/Apprentice'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tmhedberg/SimpylFold'
+
+" ===== END Plug BUNDLES =========
+call plug#end()
 
 
 
