@@ -8,40 +8,35 @@ else
 endif
 
 
-" Begin Vundle configuration, see: https://github.com/gmarik/Vundle.vim
-" set the runtime path to include Vundle and initialize
-filetype off " required for vundle. Turn it back on after vundle config is over
-" set rtp+=s:editor_root . '/bundle/vundle/'
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
 
-" ===== START VUNDLE BUNDLES =======
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'freeo/vim-kalisi'
-Plugin 'croaky/vim-colors-github'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-surround'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'Raimondi/delimitMate'
-Plugin 'mdlerch/vim-tungsten'
-Plugin 'morhetz/gruvbox'
-Plugin 'romainl/Apprentice'
-Plugin 'scrooloose/nerdcommenter'
+call plug#begin()
 
-" ===== END VUNDLE BUNDLES =========
-call vundle#end()
-filetype plugin indent on
+" ===== START Plug BUNDLES =======
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'freeo/vim-kalisi'
+Plug 'croaky/vim-colors-github'
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'nanotech/jellybeans.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Raimondi/delimitMate'
+Plug 'mdlerch/vim-tungsten'
+Plug 'morhetz/gruvbox'
+Plug 'romainl/Apprentice'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tmhedberg/SimpylFold'
+
+" ===== END Plug BUNDLES =========
+call plug#end()
 
 
 
@@ -67,9 +62,9 @@ set backspace=indent,eol,start
 " Set default color scheme
 set t_Co=256
 if has('gui_running')
-	set background=dark
+set background=dark
 else
-	set background=dark
+set background=dark
 endif
 " colorscheme kalisi
 colorscheme gruvbox
@@ -119,7 +114,7 @@ set pastetoggle=<F2>
 
 " turn on syntax highlighting
 if has('syntax')
-	syntax on
+syntax on
 endif
 
 " briefly flash the matching brace/parenthesis/bracket when you type
@@ -146,8 +141,8 @@ set laststatus=2
 " ---------
 " GVIM Window settings
 if has("gui_running")
-    set lines=40
-    set columns=84
+	set lines=40
+	set columns=80
 endif
 
 
@@ -155,6 +150,22 @@ endif
 
 
 
+" Treat lines with quote mark as comments
+set comments+=b:\"
+
+" Enable filetype detection
+filetype on
+
+" Let's show the best match so far as we type
+set incsearch
+
+" Show whitespace and tabs
+:set list
+:set listchars=tab:>-,trail:~,extends:>,precedes:<
+
+
+
+" -----------------
 " Tabs and formatting
 
 " indents of 4 characters (NO SPACES), smart and auto-indent are on,
@@ -171,22 +182,12 @@ set autoindent
 set smartindent
 set tabstop=2 " forces tabs to be X spaces
 
+" End Tabs and formatting
+" -----------------
 
-" the below settings are for python coding; autoindent, tabstop=4,
-" softtabstop=4, expandtab and shiftwidth=4. This means vim will
-" autoindent, use indents which are 4 whitespace characters, indent and
-" un-indent in 4 whitespace increments, expand tabs into spaces.
-"set autoindent
-"set tabstop=4
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
 
-" Treat lines with quote mark as comments
-set comments+=b:\"
-
-" Enable filetype detection
-filetype on
+" -----------------
+" Custom formatting for specific filetypes:
 
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
@@ -195,37 +196,60 @@ autocmd FileType make set noexpandtab shiftwidth=2
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
 
+" setup vim so that python files automatically use PEP8-compliant indentation
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
+"au BufNewFile,BufRead *.py
+    "\ set tabstop=4
+    "\ set softtabstop=4
+    "\ set shiftwidth=4
+    "\ set textwidth=79
+    "\ set expandtab
+    "\ set autoindent
+    "\ set fileformat=un
+
+" formatting for full stack development
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
 
-" Let's show the best match so far as we type
-set incsearch
 
+" End custom formatting for specific filetypes
 " --------
 
-
-" Keystrokes -- Moving around
+" -----------------
+" Keystrokes
 
 " Alternate mappings to escape so it's easier to get out of insert mode
 " currently just using <Esc> and <C-[>
 " Map new keybind to Escape in insert mode
-imap <A-,> <Esc>
+imap <A-i> <Esc>
 " imap <A-.> <Esc>
-imap <A-k> <Esc>
+"imap <S-space> <Esc>
+imap jk <Esc>
+imap kj <Esc>
 
-
-" Alternate mappings to escape so it's easier to get out of insert mode
-" currently just using <Esc> and <C-[>
+" Remap semicolon (;) to function as colon (:), saving me from holding down
+" Shift everytime I want to execute a command like save (:w)
+:nmap ; :
 
 " page down with <Space> and page up with -
-noremap <Space> <PageDown>
-noremap - <PageUp>
+" noremap <Space> <PageDown>
+" noremap - <PageUp>
 
 " Change <C-e> and <C-y> from scrolling down/up 1 line to 3 lines, so we don't
 " have to keep hitting it over and over as much
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+
+" End Keystrokes
+" -----------------
+
+
 
 " in normal mode F2 will save the file
 " nmap <F2> :w<CR>
@@ -248,9 +272,30 @@ let g:NERDTreeWinSize=45
 " -----------------
 
 
+" -----------------
+" Highlight settings
 
 " Turn off highlighting by double-tapping Escape
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
+" End Highlight settings
+" -----------------
+
+
+" -----------------
+" Code folding
+" see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#.Vi9-CN7uzXY.reddit
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with spacebar
+noremap <space> za
+
+
+" End Code Folding settings
+" -----------------
 
 
 " -----------------
