@@ -213,6 +213,9 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2
     \ set shiftwidth=2
 
+" formatting for sql files (use spaces instead of tabs for example)
+autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
+
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
