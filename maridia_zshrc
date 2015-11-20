@@ -57,7 +57,7 @@ plugins=(git)
 export DEFAULT_USER=jwl
 
 
-  export PATH="/home/jwl/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/jwl/.local/bin"
+export PATH="$PATH:/home/jwl/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/jwl/.local/bin:$HOME/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,4 +97,5 @@ esac
 
 # todo alias
 alias t="todo.sh -a"
+
 
