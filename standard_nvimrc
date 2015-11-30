@@ -69,6 +69,9 @@ endif
 " colorscheme kalisi
 colorscheme gruvbox
 
+" Set encoding to utf-8, just in case
+set encoding=utf-8
+
 " if this is gvim, turn off toolbar by default
 :set guioptions-=T
 
