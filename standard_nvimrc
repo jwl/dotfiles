@@ -70,7 +70,7 @@ endif
 colorscheme gruvbox
 
 " Set encoding to utf-8, just in case
-set encoding=utf-8
+"set encoding=utf-8
 
 " if this is gvim, turn off toolbar by default
 :set guioptions-=T
@@ -182,7 +182,7 @@ set ts=2 " sets tab stops to whatever for text input
 set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
-set smartindent
+set nosmartindent
 set tabstop=2 " forces tabs to be X spaces
 
 " End Tabs and formatting
@@ -200,7 +200,7 @@ autocmd FileType make set noexpandtab shiftwidth=2
 autocmd FileType text setlocal textwidth=80
 
 " setup vim so that python files automatically use PEP8-compliant indentation
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix nosmartindent
 "au BufNewFile,BufRead *.py
     "\ set tabstop=4
     "\ set softtabstop=4

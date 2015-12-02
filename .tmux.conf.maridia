@@ -7,6 +7,23 @@ unbind-key C-b
 unbind r
 bind-key r source-file ~/.tmux.conf \; display "Config reloaded!"
 
+# setup copy and paste hotkeys as described here:
+# http://jasonwryan.com/blog/2011/06/07/copy-and-paste-in-tmux/
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+# therefore, copy/paste workflow is as follows:
+# Ctrl-a, Escape   # enter copy mode
+# move cursor to the start or end of the desired text string
+# v  # to activate highlighting
+# move cursor to cover the requisite string
+# y                        # to capture the string
+# q                        # exit copy mode
+# Ctrl-a, p       # put/paste the text in the desired location
+
 # colors
 # set-option -g default-terminal "screen-256color" #"xterm-256color" # "screen-256color"
 set -g default-terminal "screen-256color"
