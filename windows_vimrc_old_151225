@@ -36,36 +36,42 @@ endfunction
 " End Windows specific config
 
 
-" Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
 
-call plug#begin()
 
-" ===== START Plug BUNDLES =======
-Plug 'altercation/vim-colors-solarized'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'freeo/vim-kalisi'
-Plug 'croaky/vim-colors-github'
-Plug 'bling/vim-airline'
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'nanotech/jellybeans.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'tpope/vim-surround'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'Raimondi/delimitMate'
-Plug 'mdlerch/vim-tungsten'
-Plug 'morhetz/gruvbox'
-Plug 'romainl/Apprentice'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tmhedberg/SimpylFold'
+" Begin Vundle configuration, see: https://github.com/gmarik/Vundle.vim
+" set the runtime path to include Vundle and initialize
+filetype off " required for vundle. Turn it back on after vundle config is over
+" set rtp+=s:editor_root . '/bundle/vundle/'
+set rtp+=~/vimfiles/bundle/Vundle.vim/
+call vundle#begin('~/vimfiles/')
 
-" ===== END Plug BUNDLES =========
-call plug#begin('~/vimfiles/bundle')
+" ===== START VUNDLE BUNDLES =======
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'freeo/vim-kalisi'
+Plugin 'croaky/vim-colors-github'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mdlerch/vim-tungsten'
+Plugin 'morhetz/gruvbox'
+Plugin 'romainl/Apprentice'
+Plugin 'scrooloose/nerdcommenter'
 
+" ===== END VUNDLE BUNDLES =========
+call vundle#end()
+filetype plugin indent on
 
 
 
@@ -97,9 +103,6 @@ set background=dark
 endif
 " colorscheme kalisi
 colorscheme gruvbox
-
-" Set encoding to utf-8, just in case
-"set encoding=utf-8
 
 " if this is gvim, turn off toolbar by default
 :set guioptions-=T
@@ -173,34 +176,15 @@ set laststatus=2
 " ---------
 " GVIM Window settings
 if has("gui_running")
-  set lines=40
-  set columns=80
+	set lines=40
+	set columns=80
 endif
 
-" Windows GVIM only setting:
-" Setting font to Powerline Consolas, 9pt bold
-set guifont=Powerline_Consolas:h9:b:cANSI
 
 " ---------
 
 
 
-" Treat lines with quote mark as comments
-set comments+=b:\"
-
-" Enable filetype detection
-filetype on
-
-" Let's show the best match so far as we type
-set incsearch
-
-" Show whitespace and tabs
-:set list
-:set listchars=tab:>-,trail:~,extends:>,precedes:<
-
-
-
-" -----------------
 " Tabs and formatting
 
 " indents of 4 characters (NO SPACES), smart and auto-indent are on,
@@ -214,15 +198,25 @@ set ts=2 " sets tab stops to whatever for text input
 set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
-set nosmartindent
+set smartindent
 set tabstop=2 " forces tabs to be X spaces
 
-" End Tabs and formatting
-" -----------------
 
+" the below settings are for python coding; autoindent, tabstop=4,
+" softtabstop=4, expandtab and shiftwidth=4. This means vim will
+" autoindent, use indents which are 4 whitespace characters, indent and
+" un-indent in 4 whitespace increments, expand tabs into spaces.
+"set autoindent
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+"set expandtab
 
-" -----------------
-" Custom formatting for specific filetypes:
+" Treat lines with quote mark as comments
+set comments+=b:\"
+
+" Enable filetype detection
+filetype on
 
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
@@ -231,65 +225,33 @@ autocmd FileType make set noexpandtab shiftwidth=2
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
 
-" setup vim so that python files automatically use PEP8-compliant indentation
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix nosmartindent
-"au BufNewFile,BufRead *.py
-    "\ set tabstop=4
-    "\ set softtabstop=4
-    "\ set shiftwidth=4
-    "\ set textwidth=79
-    "\ set expandtab
-    "\ set autoindent
-    "\ set fileformat=un
-
-autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 textwidth=80 fileformat=unix
-
-" formatting for full stack development
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
-" formatting for sql files (use spaces instead of tabs for example)
-autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
-
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
 
+" Let's show the best match so far as we type
+set incsearch
 
-" End custom formatting for specific filetypes
 " --------
 
-" -----------------
-" Keystrokes
+
+" Keystrokes -- Moving around
 
 " Alternate mappings to escape so it's easier to get out of insert mode
 " currently just using <Esc> and <C-[>
 " Map new keybind to Escape in insert mode
-imap <A-i> <Esc>
+imap <A-,> <Esc>
 " imap <A-.> <Esc>
-"imap <S-space> <Esc>
-imap jk <Esc>
-imap kj <Esc>
-
-" Remap semicolon (;) to function as colon (:), saving me from holding down
-" Shift everytime I want to execute a command like save (:w)
-:nmap ; :
+imap <A-k> <Esc>
 
 " page down with <Space> and page up with -
-" noremap <Space> <PageDown>
-" noremap - <PageUp>
+noremap <Space> <PageDown>
+noremap - <PageUp>
 
 " Change <C-e> and <C-y> from scrolling down/up 1 line to 3 lines, so we don't
 " have to keep hitting it over and over as much
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-
-" End Keystrokes
-" -----------------
-
-
 
 " in normal mode F2 will save the file
 " nmap <F2> :w<CR>
@@ -319,22 +281,6 @@ let g:NERDTreeWinSize=45
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " End Highlight settings
-" -----------------
-
-
-" -----------------
-" Code folding
-" see https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#.Vi9-CN7uzXY.reddit
-
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-
-" Enable folding with spacebar
-noremap <space> za
-
-
-" End Code Folding settings
 " -----------------
 
 
@@ -449,7 +395,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Global white/black list for ycm_extra_conf.py configs.
 " See https://github.com/Valloric/YouCompleteMe
-let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
+" let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
 
 
 " Disable confirmation dialog asking if you want to load the ycm_extra_conf.py

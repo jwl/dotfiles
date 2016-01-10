@@ -89,8 +89,15 @@ set history=50
 " And showing the cursor positionat all times
 set ruler
 
-" Highlight current line
-set cursorline
+" Highlight current line with autocmd so that highlight is only applied in
+" current window
+" http://vim.wikia.com/wiki/Highlight_current_line
+"set cursorline
+augroup CursorLine
+	au!
+	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 " Highlight current column
 " set cursorcolumn
