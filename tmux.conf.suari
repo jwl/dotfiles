@@ -1,0 +1,101 @@
+
+# reset prefix from ctrl-b to ctrl-a
+set -g prefix C-a
+unbind-key C-b
+
+# reload tmux.conf
+unbind r
+bind-key r source-file ~/.tmux.conf \; display "Config reloaded!"
+
+# setup copy and paste hotkeys as described here:
+# http://jasonwryan.com/blog/2011/06/07/copy-and-paste-in-tmux/
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+# therefore, copy/paste workflow is as follows:
+# Ctrl-a, Escape   # enter copy mode
+# move cursor to the start or end of the desired text string
+# v  # to activate highlighting
+# move cursor to cover the requisite string
+# y                        # to capture the string
+# q                        # exit copy mode
+# Ctrl-a, p       # put/paste the text in the desired location
+
+# colors
+# set-option -g default-terminal "screen-256color" #"xterm-256color" # "screen-256color"
+#set -g default-terminal "rxvt-unicode-256color"
+set -g default-terminal "screen-256color"
+
+# set vi status keys
+# set-option -g status-keys vi
+set-window-option -g mode-keys vi
+set-window-option -g mode-mouse on
+
+# utf8 support
+set-window-option -g utf8 on
+
+# use mouse
+set -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
+# Set status bar, see http://en.wikipedia.org/wiki/Web_colors for colour list, CGA numbers
+set-option -g status-bg colour8 #colour8 = dark gray
+set-option -g status-fg white
+set-option -g status-left-length 30
+#set-option -g status-left '#[fg=yellow,bold]>#H#T'
+set-option -g status-left '#[fg=cyan]#(whoami)@#H#[default]'
+set-option -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=white]%H:%M:%S#[default]'
+#set-option -g status-right '#[fg=cyan]> #[fg=blue,bold]###S #[fg=magenta]%R %m-%d#(acpi | cut -d ',' -f 2)#[default]'
+set-option -g status-interval 1 # refresh status bar constantly
+
+
+
+# Set window notifications
+setw -g monitor-activity on
+set-option -g visual-activity on
+
+# Highlight active window
+set-window-option -g window-status-current-bg green
+set-window-option -g window-status-current-fg black
+
+# Automatically set window title
+setw -g automatic-rename
+
+# use system clipboard. note, requires reattach-to-user-namespace to be installed or else tmux will exit on startup! If not installed, just comment this line out
+# set-option -g default-command "reattach-to-user-namespace -l bash"
+
+
+# smart pane switching with awareness of vim splits. dependent on vim bundle vim-tmux-navigator to be installed for vim
+# C-h: jump to pane on the left
+# C-j: jump to pane below
+# C-k: jump to pane above
+# C-l: jump to pane on the right
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+
+
+###############################
+# KEEP THIS BLOCK AT THE BOTTOM OF tmux.conf
+#
+# Enable tmux plugins and list all plugins in use.
+# To install a new plugin, add it to the below list with the format:
+# 		set -g @plugin '...'
+# And then hit prefix + I and install the plugin. At the time of this writing, that would be Ctrl-a followed by capital I.
+# To uninstall a plugin, comment it out on the list (or just delete it from the list). Then hit prefix + alt + u (note lowercase u).
+# Plugins will be installed to ~/.tmux/plugins/
+# To update plugins, just hit prefix + U (note, capital U)
+
+# List of plugins:
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the VERY BOTTOM of tmux.conf
+run '~/.tmux/plugins/tpm/tpm'

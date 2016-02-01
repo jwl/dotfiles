@@ -90,5 +90,16 @@ export TERMINAL="urxvt"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable alias for todotxt
+# https://aur.archlinux.org/packages/todotxt/
+# http://todotxt.com/
+alias t="todo.sh -a"
+
+# alias i3lock so it points to a specific wallpaper
+#alias i3lock="i3lock -i //home/jwl/ownCloud/images/wallpapers/homeworld_franchise/underway.png"
+
+
+
+# =================
 # Enabling powerline/airline fonts for zsh
 . /usr/share/zsh/site-contrib/powerline.zsh
