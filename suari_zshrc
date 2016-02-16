@@ -101,3 +101,5 @@ alias t="todo.sh -a"
 # alias i3lock so it points to a specific wallpaper
 #alias i3lock="i3lock -i //home/jwl/ownCloud/images/wallpapers/homeworld_franchise/underway.png"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
