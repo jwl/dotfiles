@@ -194,7 +194,7 @@ set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
 set nosmartindent
-set tabstop=2 " forces tabs to be X spaces
+"set tabstop=2 " forces tabs to be X spaces
 
 " End Tabs and formatting
 " -----------------
