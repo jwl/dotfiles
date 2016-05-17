@@ -1,8 +1,4 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
 
 " Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
 
@@ -54,9 +50,6 @@ set hidden
 " Map/remap the leader keybinding
 :let mapleader = ","
 " :let mapleader = ";"
-
-" set ms-windows behavior, see :help :behave to see exactly what this does
-behave mswin
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
