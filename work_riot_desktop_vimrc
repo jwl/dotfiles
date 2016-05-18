@@ -105,6 +105,7 @@ set showmode
 set showcmd
 set ignorecase
 set number
+set relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 
 " We don't need Vim to write a backup file; there are better ways to backup
 " than to rely on Vim
