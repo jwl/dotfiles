@@ -410,7 +410,8 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " --------
 "  enable system clipboard for vim, allowing copy/paste to and from the system
-"  clipboard
+"  clipboard. Not really sure what this does for windows. Should probably
+"  disable.
 "set clipboard=unnamedplus
 
 "---------
