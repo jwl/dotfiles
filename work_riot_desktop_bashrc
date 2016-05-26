@@ -116,7 +116,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Add ~/bin/ to $PATH
-PATH=$PATH:/home/jwl/bin
+#PATH=$PATH:/home/jwl/bin
 export PATH
 
 
