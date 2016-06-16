@@ -32,6 +32,8 @@ Plug 'morhetz/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
+" Sourcegraph, automated source example lookup for Go (for now, more languages
+" coming) https://github.com/sourcegraph/sourcegraph-vim
 Plug 'sourcegraph/sourcegraph-vim', {'for': ['go']}
 
 " ===== END Plug BUNDLES =========
