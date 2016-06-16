@@ -32,6 +32,7 @@ Plug 'morhetz/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
+Plug 'sourcegraph/sourcegraph-vim', {'for': ['go']}
 
 " ===== END Plug BUNDLES =========
 call plug#end()
