@@ -31,6 +31,7 @@ Plug 'mdlerch/vim-tungsten'
 Plug 'morhetz/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
+Plug 'pangloss/vim-javascript'
 Plug 'tmhedberg/SimpylFold'
 
 " ===== END Plug BUNDLES =========
@@ -39,6 +40,9 @@ call plug#end()
 
 
 " Based on partially on .vimrc file from http://www.stripey.com/vim/vimrc.html
+
+" Pull in some standard MS-Windows behavior such as ctrl-c and ctrl-v
+source $VIMRUNTIME/mswin.vim
 
 
 " set hidden hides buffers instead of closing them. This means you can have
@@ -218,10 +222,10 @@ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 textwidth=80 fileformat=unix
 
 " formatting for full stack development
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+"au BufNewFile,BufRead *.js, *.html, *.css
+    "\ set tabstop=2
+    "\ set softtabstop=2
+    "\ set shiftwidth=2
 
 " formatting for sql files (use spaces instead of tabs for example)
 autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
@@ -412,7 +416,7 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 "  enable system clipboard for vim, allowing copy/paste to and from the system
 "  clipboard. Not really sure what this does for windows. Should probably
 "  disable.
-"set clipboard=unnamedplus
+set clipboard=unnamed
 
 "---------
 
