@@ -295,6 +295,8 @@ let g:NERDTreeWinSize=45
 " -----------------
 " Highlight settings
 
+:set hlsearch
+
 " Turn off highlighting by double-tapping Escape
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
@@ -326,7 +328,8 @@ if has("gui_running")
 		set guifont=Menlo\ Regular:h14
 	elseif has("gui_win32")
 		"set guifont=Consolas:h9:cANSI
-		set guifont=DejaVu_Sans_Mono_for_Powerline:h9:cANSI
+		"set guifont=DejaVu_Sans_Mono_for_Powerline:h9:cANSI
+		set guifont=Powerline_Consolas:h9:cANSI "see this specific implementation of Powerline Consolas to get it to work in VIM and GVIM in widnows: https://github.com/runsisi/consolas-font-for-powerline"
 	endif
 endif
 " -----------------
