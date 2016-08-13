@@ -191,6 +191,7 @@ prompt_status() {
 
 ## Main prompt
 build_prompt() {
+  echo -n "\n" $st # insert newline at beginning of every prompt for visual separation
   RETVAL=$?
   prompt_status
   prompt_virtualenv
