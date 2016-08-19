@@ -37,6 +37,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
