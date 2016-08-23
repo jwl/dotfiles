@@ -26,9 +26,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'nanotech/jellybeans.vim'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-surround'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Raimondi/delimitMate'
 Plug 'mdlerch/vim-tungsten'
 Plug 'morhetz/gruvbox'
