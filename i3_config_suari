@@ -184,5 +184,4 @@ exec --no-startup-id dropbox start
 # load desktop wallpaper
 # https://wiki.archlinux.org/index.php/feh#As_a_desktop_wallpaper_manager
 exec --no-startup-id sh ~/.fehbg &
-exec --no-startup-id owncloud
 
