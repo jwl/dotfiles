@@ -63,6 +63,9 @@ behave mswin
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Set vim term to 256 colors just in case
+set term=screen-256color
+
 " Set default color scheme
 set t_Co=256
 if has('gui_running')
