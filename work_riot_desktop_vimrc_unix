@@ -38,6 +38,8 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -239,6 +241,9 @@ autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 tex
 " This should set .X68 files as 68k assembly files for syntax purposes
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
+
+" Set .md files as Markdown syntax
+au BufReadPost,BufRead,BufNewFile *.md set syntax=markdown
 
 
 " End custom formatting for specific filetypes

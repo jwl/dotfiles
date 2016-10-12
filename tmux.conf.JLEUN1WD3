@@ -58,6 +58,12 @@ set-option -g status-interval 1 # refresh status bar constantly
 setw -g monitor-activity on
 set-option -g visual-activity on
 
+# Make active pane more visible
+set-option -g pane-active-border-fg green
+set-option -g pane-active-border-bg yellow
+set -g window-style 'fg=colour247,bg=colour236'
+set -g window-active-style 'fg=colour250,bg=black'
+
 # Highlight active window
 set-window-option -g window-status-current-bg green
 set-window-option -g window-status-current-fg black
