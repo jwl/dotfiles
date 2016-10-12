@@ -32,15 +32,15 @@ set -g default-terminal "screen-256color"
 # set vi status keys
 # set-option -g status-keys vi
 set-window-option -g mode-keys vi
-set-window-option -g mode-mouse on
+#set-window-option -g mode-mouse on
 
-# utf8 support
-set-window-option -g utf8 on
+# utf8 support --- no longer needed in newer versions of tmux
+#set-window-option -g utf8 on
 
 # use mouse
-set -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-select-window on
+#set -g mode-mouse on
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
 
 # Set status bar, see http://en.wikipedia.org/wiki/Web_colors for colour list, CGA numbers
 set-option -g status-bg colour8 #colour8 = dark gray
