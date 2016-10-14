@@ -36,6 +36,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -188,13 +191,12 @@ set formatoptions=l " turn on word wrapping
 set lbr " make sure word wrapping doesn't break in middle of words
 set shiftwidth=2 " how much to auto-indent by
 set ts=2 " sets tab stops to whatever for text input
-"set expandtab " turn tab keypresses into spaces (set this or the one below, NOT BOTH)
-set noexpandtab " leave tab keys as real tabs (either set this or the above)
+set expandtab " turn tab keypresses into spaces (set this or the one below, NOT BOTH)
+"set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
 set nosmartindent
 set tabstop=2 " forces tabs to be X spaces
-
 " End Tabs and formatting
 " -----------------
 
@@ -235,6 +237,8 @@ autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 tex
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
 
+" Set .md files as Markdown syntax
+au BufReadPost,BufRead,BufNewFile *.md set syntax=markdown
 
 " End custom formatting for specific filetypes
 " --------
