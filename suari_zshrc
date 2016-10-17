@@ -97,6 +97,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # https://aur.archlinux.org/packages/todotxt/
 # http://todotxt.com/
 alias t="todo.sh -a"
+alias vim=nvim
+
 
 # alias i3lock so it points to a specific wallpaper
 #alias i3lock="i3lock -i //home/jwl/ownCloud/images/wallpapers/homeworld_franchise/underway.png"
