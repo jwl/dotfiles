@@ -398,7 +398,7 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 " --------
 "  enable system clipboard for vim, allowing copy/paste to and from the system
 "  clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 "---------
 
