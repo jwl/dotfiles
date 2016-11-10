@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias drmi="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
-alias docker_clean="docker rm $(docker ps -a -q)"
+#alias docker_clean="docker rm $(docker ps -a -q)"
 
 
 source '/home/jleung/.babun-docker/setup.sh'
