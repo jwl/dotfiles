@@ -403,7 +403,7 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " --------
 "  enable system clipboard for vim, allowing copy/paste to and from the system
-"  clipboard; note, unnamedplus is for Windows, unnamedplus is for Linux.
+"  clipboard; note, unnamed is for Windows, unnamedplus is for Linux.
 "  If you mix them up, Unforeseen Things will happen (ie. dd works, yy doesn't)
 "set clipboard=unnamedplus
 set clipboard=unnamed
