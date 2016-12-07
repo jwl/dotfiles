@@ -28,6 +28,39 @@ font pango:Source Code Pro 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# COLORS
+# Xresource-based. Do not manually, will be overwritten by script
+# --- APPLY XRES BEGIN
+set $c_red_d #cc241d
+set $c_blue_l #83a598
+set $c_white_l #fbf1c7
+set $c_cyan_l #8ec07c
+set $c_white_d #dbae93
+set $c_green_l #b8bb26
+set $c_green_d #98971a
+set $c_background #282828
+set $c_yellow_d #d79921
+set $c_magenta_d #b16286
+set $c_cursor #fff000
+set $c_yellow_l #fabd2f
+set $c_blue_d #458588
+set $c_black_l #665c54
+set $c_black_d #1d2021
+set $c_red_l #fb4934
+set $c_foreground #ebdbb2
+set $c_cyan_d #689d6a
+set $c_magenta_l #d3869b
+# --- APPLY XRES ENDt
+
+#class                  background?   border        text          split
+client.focused          $c_black_l    $c_black_l    $c_white_d    $c_white_d
+client.focused_inactive $c_background $c_background $c_black_l    $c_black_d
+client.unfocused        $c_black_d    $c_black_d    $c_white_d    $c_black_d
+client.urgent           $c_magenta_l  $c_magenta_l  $c_black_l    $c_magenta_l
+client.background       $c_background
+
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -164,21 +197,35 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 
+#new_window pixel 1
+hide_edge_borders smart
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        tray_output primary
-        status_command i3status
-        mode hide # hides until modifier key is depressed
-        hidden_state hide
+  position top
+  #tray_output none
+  #height 16
+  #status_command i3status
+  #using bumblebee for status bar: https://github.com/tobi-wan-kenobi/bumblebee-status
+  #status_command ~/.config/i3/bumblebee-status/bumblebee-status -m nic disk:/ cpu memory battery date time pasink pasource dnf -p time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t gruvbox-powerline
+  status_command ~/.config/i3/bumblebee-status/bumblebee-status -m battery brightness date time -p time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t gruvbox-powerline
 }
-
+bar {
+  position bottom
+  #height 16
+  #font pango:Hack, FontAwesome 9
+  status_command ~/.config/i3/bumblebee-status/bumblebee-status -m disk:/ nic cpu memory -t gruvbox-powerline
+  mode hide # hides until modifier key is depressed
+  hidden_state hide
+}
 
 # Disable focus following mouse over
 focus_follows_mouse no
 
 
 # Auto-start the following on launching i3:
+exec_always ~/.config/i3/i3-autoname-workspaces.py
 exec --no-startup-id urxvt
 exec --no-startup-id dropbox start
 # load desktop wallpaper
