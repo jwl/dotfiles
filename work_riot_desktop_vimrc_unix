@@ -123,6 +123,9 @@ set relativenumber "See post on relative number lining http://blog.petrzemek.net
 " than to rely on Vim
 set nobackup
 set noswapfile
+" Disable persistent undo file (the *.un~ files that go everywhere)
+set noundofile
+
 
 " set pastetoggle to F2 so that when it's on and you paste, Vim doesn't
 " apply autoindenting and other crap which you don't need when pasting

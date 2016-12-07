@@ -86,4 +86,6 @@ source $ZSH/oh-my-zsh.sh
 #alias docker_clean="docker rm $(docker ps -a -q)"
 
 
+export EDITOR=vim
+
 source '/home/jleung/.babun-docker/setup.sh'
