@@ -245,6 +245,10 @@ autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 tex
 let filetype_X68 = "asm68k"
 let filetype_pal = "pascal"
 
+" set the following file extensions to be treated as Markdown
+" http://vi.stackexchange.com/questions/221/open-md-files-as-markdown
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  set ft=markdown tabstop=2 shiftwidth=2 expandtab
+
 " Set .md files as Markdown syntax
 au BufReadPost,BufRead,BufNewFile *.md set syntax=markdown
 
