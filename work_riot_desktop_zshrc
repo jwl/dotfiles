@@ -58,6 +58,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
+
+# Setup Go/Golang environment variables
+export GOROOT="C:/Go"
+export PATH=$PATH:"/cygdrive/c/Go/bin"
+#export GOPATH="C:/Go/go3d"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
