@@ -18,7 +18,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'freeo/vim-kalisi'
 Plug 'croaky/vim-colors-github'
 Plug 'bling/vim-airline'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -37,6 +38,12 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
+"Plug 'othree/yajs.vim'
+"Plug 'othree/es.next.syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
@@ -119,6 +126,10 @@ set relativenumber "See post on relative number lining http://blog.petrzemek.net
 " than to rely on Vim
 set nobackup
 set noswapfile
+
+" Disable safe write feature, since this may confound the file watcher for
+" webpack: https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
+set backupcopy=yes
 
 " set pastetoggle to F2 so that when it's on and you paste, Vim doesn't
 " apply autoindenting and other crap which you don't need when pasting
@@ -224,11 +235,16 @@ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 
 
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 textwidth=80 fileformat=unix
 
-" formatting for full stack development
+" formatting for full stack development with javascript and node
 au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
+
+" Turn on JSX syntax highlighting for javascript files (*.js)
+let g:jsx_ext_required = 0
+
+
 
 " formatting for sql files (use spaces instead of tabs for example)
 autocmd Filetype sql setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 fileformat=unix
@@ -343,6 +359,12 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
 \}
 
+" Set c-p as default shortcut and have it used Mixed instead of default
+" ie. search for files and search in already open files to facilitate easy
+" switching between files
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
@@ -416,7 +438,16 @@ let g:syntastic_mode_map={ 'mode': 'active',
 "------- end Syntastic options
 
 
+"------- Emmet options
 
+" make emmet use 'class' instead of 'classname' when editing *.jsx
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+"------- end Emmet options
 
 " --------
 "  YouCompleteMe settings (vim auto-completion plugin)
