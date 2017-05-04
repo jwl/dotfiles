@@ -40,6 +40,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'leafgarland/typescript-vim'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -198,8 +199,8 @@ set formatoptions=l " turn on word wrapping
 set lbr " make sure word wrapping doesn't break in middle of words
 set shiftwidth=2 " how much to auto-indent by
 set ts=2 " sets tab stops to whatever for text input
-"set expandtab " turn tab keypresses into spaces (set this or the one below, NOT BOTH)
-set noexpandtab " leave tab keys as real tabs (either set this or the above)
+set expandtab " turn tab keypresses into spaces (set this or the one below, NOT BOTH)
+"set noexpandtab " leave tab keys as real tabs (either set this or the above)
 set shiftround
 set autoindent
 set nosmartindent
