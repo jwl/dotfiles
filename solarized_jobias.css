@@ -1,0 +1,225 @@
+/* General */
+
+
+body {
+  background-color: #fdf6e3 !important;
+  color: #586e75 !important;
+}
+
+/*textarea#editor {*/
+  /*font-family: 'Consolas' !important;*/
+  /*font-size: 14px !important;*/
+  /*background-color: #fdf6e3 !important;*/
+/*}*/
+
+.app .section > .content {
+  background-color: #fdf6e3 !important;
+}
+
+.section-menu {
+  background-color: #eee8d5 !important;
+  color: #586e75 !important;
+}
+
+.editor-content {
+  background-color: #fdf6e3 !important;
+  color: #586e78 !important;
+}
+
+.editor-content .editable {
+  background-color: #fdf6e3 !important;
+  color: #586e78 !important;
+}
+
+.add-button {
+  background-color: rgba(147, 161, 161, 0.5)!important;
+}
+
+.panel {
+  background-color: #eee8d5 !important;
+  color: #586e75 !important;
+}
+
+.dropdown-menu {
+  background-color: #fdf6e3 !important;
+  color: #657b83 !important;
+  overflow: auto !important;
+}
+
+.nt-dropdown-menu.dark li .text {
+  color: #586e75 !important;
+}
+
+.blue {
+  color: #268bd2 !important;
+}
+
+.gray-bg {
+  background-color: #eee8d5 !important;
+  color: #586e75 !important;
+  border: 1px solid #586e75 !important;
+}
+
+.white-bg {
+  background-color: #fdf6e3 !important;
+  color: #657b83 !important;
+}
+
+
+/* Tags */
+
+.app .tags .content {
+  background-color: #fdf6e3 !important;
+}
+
+#tags-title-bar {
+  color: #586e75 !important;
+}
+
+.tags .tag {
+  color: #657b83 !important;
+}
+
+.tags .tag > .info > .title {
+  color: #657b83 !important;
+}
+
+.tags .tag.selected {
+  background-color: #eee8d5 !important;
+}
+
+.tags .tag:hover:not(.selected) {
+  background-color: #eee8d5 !important;
+}
+
+
+/* Notes */
+
+.app .notes .content {
+  background-color: #fdf6e3 !important;
+}
+
+.notes {
+  border-left: 1px solid #586e75 !important;
+  border-right: 1px solid #586e75 !important;
+}
+
+#notes-title-bar {
+  color: #586e75 !important;
+  background-color: #fdf6e3 !important;
+}
+
+.notes .filter-section .filter-bar {
+  background-color: #eee8d5 !important;
+}
+
+.notes .note.selected {
+  background-color: #eee8d5 !important;
+  color: #657b83 !important;
+}
+
+.notes .note {
+  border-top: 1px solid #93a1a1 !important;
+  background-color: #fdf6e3 !important;
+  color: #586e75;
+}
+
+
+/* Editor */
+
+#editor-title-bar {
+  background-color: #fdf6e3 !important;
+}
+
+#editor-title-bar > .title > .input {
+  color: #657b83 !important;
+}
+
+.editor-content {
+  background: inherit;
+  background-color: #fdf6e3 !important;
+  color: #657b83;
+}
+
+#note-text-editor {
+  background-color: #fdf6e3 !important;
+  color: #657b83 !important;
+
+  overflow-y: auto !important;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 18px;
+  padding-right: 0;
+  max-width: none;
+}
+
+
+#editor-title-bar .editor-tags .tags-input {
+  color: #586e75 !important;
+}
+
+
+/* Menus */
+
+.menu-section-header {
+  background-color: #eee8d5 !important;
+  border-bottom: 1px solid #93a1a1 !important;
+  color: #586e75 !important;
+}
+
+.dropdown-menu.editor-menu ul li.menu-item {
+  border-bottom: 1px solid #93a1a1 !important;
+  background-color: #fdf6e3 !important;
+}
+
+.dropdown-menu.editor-menu ul li.menu-item:hover {
+  background-color: rgba(253, 246, 227, 0.5); !important;
+  color: #586e75 !important;
+}
+
+.dropdown-menu.editor-menu ul li.menu-item button {
+  border: 1px solid #93a1a1 !important;
+  background-color: rgba(147, 161, 161, 0.5) !important;
+  color: #657b83 !important;
+}
+
+.menu-section-footer {
+  background-color: #eee8d5 !important;
+  border-top: 1px solid #93a1a1 !important;
+  border-bottom: 1px solid #93a1a1 !important;
+  color: #586e75 !important;
+}
+
+.menu-section-footer input {
+  background-color: #fdf6e3 !important;
+  border: 1px solid #93a1a1 !important;
+  color: #93a1a1 !important;
+}
+
+
+/* Footer */
+
+#footer-bar {
+  background-color: #eee8d5 !important;
+}
+
+#footer-bar a {
+  color: #93a1a1;
+}
+
+.footer-bar-link > a {
+  color: #839496 !important;
+}
+
+/* UI */
+
+button.light {
+  background-color: #fdf6e3 !important;
+  border: #586e75 !important;
+  color: #93a1a1 !important;
+}
+
+.form-control {
+  background-color: #fdf6e3 !important;
+  border: 1px solid #586e75 !important;
+}

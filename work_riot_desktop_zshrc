@@ -59,6 +59,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 
+# setup todo_completion so I get access to tasty shortcuts
+source /home/jleung/git_workspace/dotfiles/todo.txt_cli-2.9/todo_completion
+
 # Setup Go/Golang environment variables
 export GOROOT="C:/Go"
 export PATH=$PATH:"/cygdrive/c/Go/bin"
@@ -91,6 +94,7 @@ export PATH=$PATH:"/cygdrive/c/Go/bin"
 #alias drmi="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
 #alias docker_clean="docker rm $(docker ps -a -q)"
 
+alias t="todo.sh -a"
 
 export EDITOR=vim
 
