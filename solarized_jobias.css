@@ -6,12 +6,6 @@ body {
   color: #586e75 !important;
 }
 
-/*textarea#editor {*/
-  /*font-family: 'Consolas' !important;*/
-  /*font-size: 14px !important;*/
-  /*background-color: #fdf6e3 !important;*/
-/*}*/
-
 .app .section > .content {
   background-color: #fdf6e3 !important;
 }
@@ -19,16 +13,6 @@ body {
 .section-menu {
   background-color: #eee8d5 !important;
   color: #586e75 !important;
-}
-
-.editor-content {
-  background-color: #fdf6e3 !important;
-  color: #586e78 !important;
-}
-
-.editor-content .editable {
-  background-color: #fdf6e3 !important;
-  color: #586e78 !important;
 }
 
 .add-button {
