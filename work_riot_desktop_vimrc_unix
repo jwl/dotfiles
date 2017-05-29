@@ -38,7 +38,11 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'leafgarland/typescript-vim'
 
