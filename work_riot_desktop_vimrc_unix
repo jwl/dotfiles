@@ -166,6 +166,10 @@ set wildmode=list:longest,full
 " as well as whether or not it has been modified since opening.
 set laststatus=2
 
+" By default mxw/vim-jsx assumes jsx files end with a .jsx extension
+" This enables jsx highlighting for .js files as well
+let g:jsx_ext_required = 0
+
 
 " ---------
 " GVIM Window settings
