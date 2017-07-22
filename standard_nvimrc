@@ -20,7 +20,8 @@ Plug 'freeo/vim-kalisi'
 Plug 'bling/vim-airline'
 "Plug 'kien/ctrlp.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+"Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
@@ -355,7 +356,7 @@ let g:airline_powerline_fonts = 1
 "
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
   \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
 \}
 
@@ -363,12 +364,12 @@ let g:ctrlp_custom_ignore = {
 " ie. search for files and search in already open files to facilitate easy
 " switching between files
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
