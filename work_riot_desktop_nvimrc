@@ -21,7 +21,7 @@ Plug 'sickill/vim-monokai'
 Plug 'bling/vim-airline'
 "Plug 'kien/ctrlp.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
@@ -46,7 +46,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'leafgarland/typescript-vim'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -73,7 +73,7 @@ behave mswin
 set backspace=indent,eol,start
 
 " Set vim term to 256 colors just in case
-set term=screen-256color
+"set term=screen-256color
 
 " Set default color scheme
 set t_Co=256
@@ -437,14 +437,16 @@ let g:syntastic_mode_map={ 'mode': 'active',
 \ 'active_filetypes': [],
 \ 'passive_filetypes': ['html','c', 'cpp', 'h'] }
 
-" Set syntastic to follow StandardJS Style, https://standardjs.com/
-" https://budidharmawan.com/2016/09/22/Vim-Standard-js/
-let g:syntastic_javascript_checkers = ['standard']
-autocmd bufwritepost *.js silent !standard-format -w %
-set autoread
 
 "------- end Syntastic options
 
+
+"------- ALE options https://github.com/w0rp/ale
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+
+"-------
 
 
 
