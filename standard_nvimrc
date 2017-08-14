@@ -36,7 +36,7 @@ Plug 'morhetz/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
 "Plug 'othree/yajs.vim'
