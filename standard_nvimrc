@@ -18,25 +18,20 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'freeo/vim-kalisi'
 "Plug 'croaky/vim-colors-github'
 Plug 'bling/vim-airline'
-"Plug 'kien/ctrlp.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
-"Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-easytags'
 Plug 'nanotech/jellybeans.vim'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-surround'
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Raimondi/delimitMate'
 Plug 'mdlerch/vim-tungsten'
 Plug 'morhetz/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
 "Plug 'othree/yajs.vim'
@@ -208,6 +203,7 @@ set expandtab " turn tab keypresses into spaces (set this or the one below, NOT 
 set shiftround
 set autoindent
 set nosmartindent
+filetype plugin indent on
 set tabstop=2 " forces tabs to be X spaces
 " End Tabs and formatting
 " -----------------
@@ -238,7 +234,8 @@ autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 te
 
 " formatting for full stack development with javascript and node
 au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
+    "\ set tabstop=2 |
+    \ set expandtab |
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
