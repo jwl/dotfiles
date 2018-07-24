@@ -46,6 +46,14 @@ Plug 'mattn/emmet-vim'
 Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -451,34 +459,8 @@ let g:user_emmet_settings = {
 
 "------- end Emmet options
 
-" --------
-"  YouCompleteMe settings (vim auto-completion plugin)
-"  references:
-"  * http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
-"  * http://vimawesome.com/plugin/youcompleteme
-"  * https://github.com/neovim/neovim/issues/1315
-"  * https://github.com/Valloric/YouCompleteMe
 
-" Auto-remove preview window after exiting insert mode
-" (see: https://valloric.github.io/YouCompleteMe/)
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Global white/black list for ycm_extra_conf.py configs.
-" See https://github.com/Valloric/YouCompleteMe
-let g:ycm_extra_conf_globlist = ['~/sandbox/*','!~/*']
-
-
-" Disable confirmation dialog asking if you want to load the ycm_extra_conf.py
-" EVERY time you launch vim (which is excessive IMHO)
-let g:ycm_confirm_extra_conf = 1
-" let g:ycm_confirm_extra_conf = 0
-
-" Alternate options:
-" auto-close after selecting a completion string
-" g:ycm_autoclose_preview_window_after_completion = 1
-" Don't open the preview window at all
-" set completeopt-=preview
-" g:ycm_add_preview_to_completeopt = 0
-
-
-" --------- End YouCompleteMe (YCM) options
+"------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+"------- End deoplete.nvim options
