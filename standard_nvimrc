@@ -57,8 +57,6 @@ Plug 'wokalski/autocomplete-flow'
 " For func argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-let g:deoplete#enable_at_startup = 1
-let g:neosnippet#enable_completed_snippet = 1
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -468,4 +466,15 @@ let g:user_emmet_settings = {
 "------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+let g:neosnippet#enable_completed_snippet = 1
+set omnifunc=syntaxcomplete#Complete
+
+" enable java autocompletion? See https://www.reddit.com/r/neovim/comments/4m22p1/vimjavacomplete2_java_autocomplete_plugin/
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = []
+let g:deoplete#file#enable_buffer_path = 1
+
 "------- End deoplete.nvim options
