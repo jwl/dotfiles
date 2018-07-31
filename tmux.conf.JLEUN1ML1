@@ -36,6 +36,7 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 # set-option -g status-keys vi
 set-window-option -g mode-keys vi
 #set-window-option -g mode-mouse on
+set -g mouse on
 
 # utf8 support
 #set-window-option -g utf8 on # potentially not needed in newer versions of tmux anymore?
