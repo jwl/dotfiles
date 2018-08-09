@@ -57,6 +57,7 @@ Plug 'wokalski/autocomplete-flow'
 " For func argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'NLKNguyen/papercolor-theme'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -89,8 +90,9 @@ set background=dark
 else
 set background=dark
 endif
-" colorscheme kalisi
+"colorscheme kalisi
 colorscheme gruvbox
+"colorscheme jellybeans
 
 " Set encoding to utf-8, just in case
 "set encoding=utf-8
