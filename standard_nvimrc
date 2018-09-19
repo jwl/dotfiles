@@ -58,6 +58,7 @@ Plug 'wokalski/autocomplete-flow'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'majutsushi/tagbar'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -314,8 +315,7 @@ nnoremap <C-y> 3<C-y>
 " F2 now used for opening NERDTree and F3 for taglist
 map <F2> :NERDTreeToggle<CR>
 imap <F2> <C-o>:NERDTreeToggle<CR>
-map <F3> :TlistToggle<CR>
-imap <F3> <C-o>:TlistToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
