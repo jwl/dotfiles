@@ -430,6 +430,16 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 " End Buffergator settings
 " -----------------
 
+" ---------
+" Begin ale settings
+" settings for standard javascript
+let g:ale_linters = {
+      \   'javascript': ['standard'],
+      \}
+let g:ale_fixers = {'javascript': ['standard']}
+
+" end ale settings
+"---------
 
 
 " --------
