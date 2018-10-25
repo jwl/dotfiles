@@ -149,6 +149,17 @@ set backupcopy=yes
 " apply autoindenting and other crap which you don't need when pasting
 set pastetoggle=<F2>
 
+" set 'd' to be delete and leader 'd' as cut.
+" https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+
 " enable mouse, to disable, set mouse to -a instead of a
 " set mouse=a
 :set mouse=a
