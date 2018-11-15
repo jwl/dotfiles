@@ -69,6 +69,9 @@ set-window-option -g window-status-current-fg black
 # Automatically set window title
 setw -g automatic-rename
 
+# Start window numbering at 1 instead of 0
+set -g base-index 1
+
 # use system clipboard. note, requires reattach-to-user-namespace to be installed or else tmux will exit on startup! If not installed, just comment this line out
 # set-option -g default-command "reattach-to-user-namespace -l bash"
 
