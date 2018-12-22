@@ -20,6 +20,8 @@ call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'freeo/vim-kalisi'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
 "Plug 'croaky/vim-colors-github'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -42,8 +44,9 @@ Plug 'ekalinin/Dockerfile.vim'
 "Plug 'othree/es.next.syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
 Plug 'mattn/emmet-vim'
-Plug 'wavded/vim-stylus'
+"Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 if has('nvim')
@@ -91,9 +94,12 @@ set background=dark
 else
 set background=dark
 endif
-"colorscheme kalisi
 colorscheme gruvbox
-"colorscheme jellybeans
+set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
 
 " Set encoding to utf-8, just in case
 "set encoding=utf-8
@@ -241,6 +247,7 @@ set tabstop=2 " forces tabs to be X spaces
 " -----------------
 " Custom formatting for specific filetypes:
 
+" Makefiles
 " So, since we need actual tab characters in make files, we probably
 " shouldn't expand them into space characters, right?
 autocmd FileType make set noexpandtab shiftwidth=2
@@ -271,6 +278,12 @@ au BufNewFile,BufRead *.js,*.html,*.css
 " Turn on JSX syntax highlighting for javascript files (*.js)
 let g:jsx_ext_required = 0
 
+" Set .js files as javascript.jsx
+au BufReadPost,BufRead,BufNewFile *.js,*.jsx set syntax=javascript.jsx
+
+
+" Turn on support for Flow and syntax highlighting
+let g:javascript_plugin_flow = 1
 
 
 " formatting for sql files (use spaces instead of tabs for example)
@@ -482,6 +495,9 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
+
+" set emmet leader key to <Tab>
+let g:user_emmet_leader_key='<Tab>'
 
 "------- end Emmet options
 
