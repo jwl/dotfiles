@@ -1,11 +1,14 @@
 set nocompatible
 
+filetype off
+
 " isolate neovim bundles and plugins from vim's
 if has('nvim')
 	let s:editor_root=expand("~/.nvim")
 else
 	let s:editor_root=expand("~/.vim")
 endif
+
 
 
 " Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
@@ -45,6 +48,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 "Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
@@ -70,6 +74,10 @@ call plug#end()
 
 " Based on partially on .vimrc file from http://www.stripey.com/vim/vimrc.html
 
+
+" Enable filetype detection
+filetype plugin indent on
+syntax on
 
 " set hidden hides buffers instead of closing them. This means you can have
 " unwritten changes to a file and open a new file using :e without being
@@ -195,6 +203,10 @@ set wildmode=list:longest,full
 " as well as whether or not it has been modified since opening.
 set laststatus=2
 
+" Increase message size so vim won't show 'press enter to continue' prompts
+" http://vim.wikia.com/wiki/Avoiding_the_%22Hit_ENTER_to_continue%22_prompts
+:set shortmess=aoOtI
+
 
 " ---------
 " GVIM Window settings
@@ -210,9 +222,6 @@ endif
 
 " Treat lines with quote mark as comments
 set comments+=b:\"
-
-" Enable filetype detection
-filetype on
 
 " Let's show the best match so far as we type
 set incsearch
@@ -281,6 +290,8 @@ let g:jsx_ext_required = 0
 " Set .js files as javascript.jsx
 au BufReadPost,BufRead,BufNewFile *.js,*.jsx set syntax=javascript.jsx
 
+" set .ts files as typescript
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " Turn on support for Flow and syntax highlighting
 let g:javascript_plugin_flow = 1
@@ -456,11 +467,14 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " ---------
 " Begin ale settings
-" settings for standard javascript
 let g:ale_linters = {
-      \   'javascript': ['standard'],
+      \   'javascript': ['prettier'],
+      \   'css': ['prettier'],
       \}
-let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_fixers = {
+      \   'javascript': ['prettier'],
+      \   'css': ['prettier'],
+      \}
 
 " end ale settings
 "---------
@@ -497,7 +511,7 @@ let g:user_emmet_settings = {
 \}
 
 " set emmet leader key to <Tab>
-let g:user_emmet_leader_key='<Tab>'
+"let g:user_emmet_leader_key='<Tab>'
 
 "------- end Emmet options
 

@@ -107,3 +107,5 @@ export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
 eval "$(jenv init -)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
