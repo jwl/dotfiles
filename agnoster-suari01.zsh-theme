@@ -172,7 +172,7 @@ prompt_dir() {
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
+    prompt_segment cyan black "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -195,9 +195,9 @@ build_prompt() {
   echo -n "\n" $st # insert newline at beginning of every prompt for visual separation
   RETVAL=$?
   prompt_status
-  prompt_virtualenv
   prompt_context
   prompt_dir
+  prompt_virtualenv
   prompt_git
   prompt_hg
   prompt_end
