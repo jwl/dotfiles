@@ -65,6 +65,8 @@ source $ZSH/oh-my-zsh.sh
 #export GOROOT="C:/Go"
 #export PATH=$PATH:"/cygdrive/c/Go/bin"
 #export GOPATH="C:/Go/go3d"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
