@@ -49,7 +49,7 @@ ZSH_THEME="agnoster-suari01"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git virtualenv)
 
 # User configuration
 
@@ -65,6 +65,8 @@ source $ZSH/oh-my-zsh.sh
 #export GOROOT="C:/Go"
 #export PATH=$PATH:"/cygdrive/c/Go/bin"
 #export GOPATH="C:/Go/go3d"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -106,6 +108,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 eval "$(jenv init -)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
