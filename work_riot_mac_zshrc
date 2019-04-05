@@ -50,7 +50,7 @@ ZSH_THEME="agnoster-suari01"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenv)
+plugins=(git virtualenv vi-mode)
 
 # User configuration
 
@@ -99,9 +99,35 @@ export EDITOR=nvim
 
 # source '/home/jleung/.babun-docker/setup.sh'
 
+# NVM initiation https://github.com/creationix/nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# place this after nvm initialization to automatically switch node/npm when entering a directory with a .nvmrc file
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+# end NVM initiation
+
 export PATH=/Users/jleung/.jenv/bin:/Users/jleung/.nvm/versions/node/v10.7.0/bin:/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH="$HOME/.cargo/bin:$PATH"
 export M2_HOME=/usr/local/maven

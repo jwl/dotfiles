@@ -69,6 +69,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'hzchirs/vim-material'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -105,7 +106,7 @@ set background=dark
 else
 set background=dark
 endif
-"colorscheme gruvbox
+"colorscheme vim-material
 "let g:material_style='oceanic'
 "let g:airline_theme='material'
 colorscheme gruvbox
@@ -493,6 +494,12 @@ let g:ale_fixers = {
 " end ale settings
 "---------
 
+
+"---------
+" Begin polyglot settings
+
+" Since we're using semshi for python syntax highlighting, disable polyglot's python support so they don't conflict:
+let g:polyglot_disabled = ['python']
 
 " --------
 "  enable system clipboard for vim, allowing copy/paste to and from the system
