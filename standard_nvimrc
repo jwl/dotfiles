@@ -26,7 +26,7 @@ Plug 'freeo/vim-kalisi'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 "Plug 'croaky/vim-colors-github'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
@@ -36,7 +36,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'mdlerch/vim-tungsten'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
@@ -271,6 +271,9 @@ autocmd FileType make set noexpandtab shiftwidth=2
 
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
+
+" set vertical line denoting 80 character line length
+set colorcolumn=80
 
 " setup vim so that python files automatically use PEP8-compliant indentation
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 fileformat=unix nosmartindent
