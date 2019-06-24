@@ -62,11 +62,6 @@ fpath=(~/.zsh/completion $fpath)
 source $ZSH/oh-my-zsh.sh
 
 
-# Setup Go/Golang environment variables
-#export GOROOT="C:/Go"
-#export PATH=$PATH:"/cygdrive/c/Go/bin"
-#export GOPATH="C:/Go/go3d"
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -98,6 +93,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=nvim
 
 # source '/home/jleung/.babun-docker/setup.sh'
+
+# enable vim keybindings
+bindkey -v
 
 # NVM initiation https://github.com/creationix/nvm
 export NVM_DIR="$HOME/.nvm"
