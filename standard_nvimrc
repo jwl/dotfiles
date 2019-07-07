@@ -432,8 +432,8 @@ let g:ctrlp_custom_ignore = {
 " Set c-p as default shortcut and have it used Mixed instead of default
 " ie. search for files and search in already open files to facilitate easy
 " switching between files
-let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
