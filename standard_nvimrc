@@ -542,8 +542,8 @@ let g:user_emmet_settings = {
 "------- end Emmet options
 
 "------- Split window keybinds
-nmap ss :split<Return><C-w>w
-nmap sv :vsplit<Return><C-w>w
+nmap <leader>s :split<Return><C-w>w
+nmap <leader>v :vsplit<Return><C-w>w
 
 "------- end split window keybinds
 
