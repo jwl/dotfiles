@@ -53,7 +53,7 @@ plugins=(git virtualenv)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/home/jwl/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 fpath=(~/.zsh/completion $fpath)
@@ -131,7 +131,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 
-export PATH=/Users/jleung/.jenv/bin:/Users/jleung/.nvm/versions/node/v10.7.0/bin:/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/home/jwl/.jenv/bin:/home/jwl/.nvm/versions/node/v10.7.0/bin:/home/hwl/bin:/usr/local/bin:/home/jwl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/home/jwl/.pyenv/bin:$PATH"
 export M2_HOME=/usr/local/maven
@@ -143,5 +143,5 @@ export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 #eval "$(jenv init -)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
