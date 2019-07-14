@@ -274,7 +274,7 @@ autocmd FileType make set noexpandtab shiftwidth=2
 autocmd FileType text setlocal textwidth=80
 
 " set vertical line denoting 80 character line length
-set colorcolumn=80
+"set colorcolumn=80
 
 " setup vim so that python files automatically use PEP8-compliant indentation
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 fileformat=unix nosmartindent
@@ -540,6 +540,12 @@ let g:user_emmet_settings = {
 "let g:user_emmet_leader_key='<Tab>'
 
 "------- end Emmet options
+
+"------- Split window keybinds
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
+"------- end split window keybinds
 
 
 "------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
