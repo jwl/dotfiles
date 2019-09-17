@@ -135,5 +135,8 @@ eval "$(jenv init -)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# set goprivate for Riot produced Golang modules
+export GOPRIVATE=*.riotgames.com
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
