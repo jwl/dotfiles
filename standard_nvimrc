@@ -430,7 +430,7 @@ let g:airline_powerline_fonts = 1
 "
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist|env.bak)$',
   \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
 \}
 
