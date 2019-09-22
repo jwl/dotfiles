@@ -50,14 +50,15 @@ Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
 "Plug 'othree/yajs.vim'
 "Plug 'othree/es.next.syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'mattn/emmet-vim'
 "Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-pandoc/vim-pandoc-syntax'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -414,7 +415,8 @@ noremap <space> za
 "  Enable displaying buffers at the top of the viewable area with airline
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'short_path'
 
 " Enable powerline symbols (ie. the little arrows)
 let g:airline_powerline_fonts = 1
@@ -428,7 +430,7 @@ let g:airline_powerline_fonts = 1
 "
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist)$',
   \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
 \}
 
@@ -450,6 +452,9 @@ nmap <leader>p :CtrlP<cr>
 " rescan all directories. Useful if a new file has been added since the last
 " time CtrlP was used
 nmap <leader>rr :CtrlPClearAllCaches<cr>
+
+" Disable caching/always rescan files on every ctrlp invocation
+let g:ctrlp_use_caching = 0
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
@@ -492,12 +497,17 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 " Begin ale settings
 let g:ale_linters = {
       \   'javascript': ['prettier'],
+      \   'typescript': ['prettier'],
       \   'css': ['prettier'],
       \}
 let g:ale_fixers = {
       \   'javascript': ['prettier'],
+      \   'typescript': ['prettier'],
       \   'css': ['prettier'],
       \}
+
+" run Prettier on save
+let g:ale_fix_on_save = 1
 
 " end ale settings
 "---------
@@ -556,6 +566,9 @@ nmap <leader>v :vsplit<Return><C-w>w
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
 set omnifunc=syntaxcomplete#Complete
+
+" Enable <TAB> for completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " enable java autocompletion? See https://www.reddit.com/r/neovim/comments/4m22p1/vimjavacomplete2_java_autocomplete_plugin/
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
