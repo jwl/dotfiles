@@ -45,13 +45,10 @@ Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
-"Plug 'othree/yajs.vim'
-"Plug 'othree/es.next.syntax.vim'
-"Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
 Plug 'davidhalter/jedi-vim'
@@ -407,6 +404,15 @@ noremap <space> za
 
 
 " End Code Folding settings
+" -----------------
+
+
+" -----------------
+" python3 nvim pyenv environment
+
+let g:python3_host_prog=expand('/Users/jleung/.pyenv/versions/nvim-3.7.3/bin/python')
+
+" end python3 nvim pyenv environment
 " -----------------
 
 
