@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
 Plug 'nanotech/jellybeans.vim'
@@ -409,8 +410,12 @@ noremap <space> za
 
 " -----------------
 " python3 nvim pyenv environment
-
-let g:python3_host_prog=expand('/Users/jleung/.pyenv/versions/nvim-3.7.3/bin/python')
+if has('macunix')
+  let g:python3_host_prog=expand('/Users/jleung/.pyenv/versions/nvim-3.7.3/bin/python')
+endif
+if has('unix')
+  let g:python3_host_prog=expand('/home/jwl/.pyenv/versions/nvim-3.7.3/bin/python')
+endif
 
 " end python3 nvim pyenv environment
 " -----------------
