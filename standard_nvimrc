@@ -30,7 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
 Plug 'nanotech/jellybeans.vim'
@@ -73,6 +73,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'hzchirs/vim-material'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " ===== END Plug BUNDLES =========
@@ -158,8 +159,9 @@ augroup END
 set showmode
 set showcmd
 set ignorecase
-set number
-"set relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+"set number
+set number relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+"use plugin vim-numbertoggle to manage linenumbers
 
 " We don't need Vim to write a backup file; there are better ways to backup
 " than to rely on Vim
@@ -173,6 +175,9 @@ set backupcopy=yes
 " set pastetoggle to F2 so that when it's on and you paste, Vim doesn't
 " apply autoindenting and other crap which you don't need when pasting
 set pastetoggle=<F2>
+
+" https://dev.to/vintharas/5-minutes-vim-ctrlp-considered-harmful-48eg
+noremap <C-p> :<C-u>FZF<CR>
 
 " set 'd' to be delete and leader 'd' as cut.
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
@@ -440,37 +445,36 @@ let g:airline_powerline_fonts = 1
 " CtrlP Settings
 "
 " Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist|env.bak)$',
-  \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
-\}
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist|env.bak)$',
+  "\ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
+"\}
 
 " Set c-p as default shortcut and have it used Mixed instead of default
 " ie. search for files and search in already open files to facilitate easy
 " switching between files
-"let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'ra'
 
 " Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
+"nmap <leader>p :CtrlP<cr>
 
 " Binding to clear CtrlP cache so that on next invocation of CtrlP it will
 " rescan all directories. Useful if a new file has been added since the last
 " time CtrlP was used
-nmap <leader>rr :CtrlPClearAllCaches<cr>
+"nmap <leader>rr :CtrlPClearAllCaches<cr>
 
 " Disable caching/always rescan files on every ctrlp invocation
-let g:ctrlp_use_caching = 0
+"let g:ctrlp_use_caching = 0
 
 " Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
+"nmap <leader>bb :CtrlPBuffer<cr>
+"nmap <leader>bm :CtrlPMixed<cr>
+"nmap <leader>bs :CtrlPMRU<cr>
 
 " End CtrlP settings
 " -----------------
