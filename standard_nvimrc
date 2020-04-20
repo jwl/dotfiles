@@ -40,8 +40,6 @@ Plug 'mdlerch/vim-tungsten'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/vim-color-forest-night'
-Plug 'sainnhe/vim-color-desert-night'
-Plug 'sainnhe/vim-color-vanilla-cake'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
@@ -410,10 +408,12 @@ noremap <space> za
 
 " -----------------
 " python3 nvim pyenv environment
-if has('macunix')
+"if has('macunix')
+if system('uname') =~ "Darwin"
   let g:python3_host_prog=expand('/Users/jleung/.pyenv/versions/nvim-3.7.3/bin/python')
 endif
-if has('unix')
+"if has('unix')
+if system('uname') =~ "Linux"
   let g:python3_host_prog=expand('/home/jwl/.pyenv/versions/nvim-3.7.3/bin/python')
 endif
 
