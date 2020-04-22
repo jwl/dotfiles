@@ -6,3 +6,6 @@
   'ctrl-[': 'vim:exit-insert-mode'
   'j k': 'vim:exit-insert-mode'
   'k j': 'vim:exit-insert-mode'
+'.CodeMirror textarea':
+  'alt-]': 'editor:indent-more'
+  'alt-[': 'editor:indent-less'
