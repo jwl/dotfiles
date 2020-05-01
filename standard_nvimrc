@@ -171,7 +171,7 @@ set backupcopy=yes
 
 " set pastetoggle to F2 so that when it's on and you paste, Vim doesn't
 " apply autoindenting and other crap which you don't need when pasting
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
 " https://dev.to/vintharas/5-minutes-vim-ctrlp-considered-harmful-48eg
 noremap <C-p> :<C-u>FZF<CR>
@@ -371,9 +371,9 @@ nnoremap <C-y> 3<C-y>
 
 " -----------------
 " NERDTree settings
-" F2 now used for opening NERDTree and F3 for taglist
-map <F2> :NERDTreeToggle<CR>
-imap <F2> <C-o>:NERDTreeToggle<CR>
+" F3 now used for opening NERDTree and F8 for taglist
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <C-o>:NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 let NERDTreeMinimalUI=1
