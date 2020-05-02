@@ -26,7 +26,7 @@ Plug 'freeo/vim-kalisi'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -439,44 +439,6 @@ let g:airline_powerline_fonts = 1
 " End Vim-Airline settings
 " -----------------
 
-
-" -----------------
-" CtrlP Settings
-"
-" Setup some default ignores
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules|dist|env.bak)$',
-  "\ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
-"\}
-
-" Set c-p as default shortcut and have it used Mixed instead of default
-" ie. search for files and search in already open files to facilitate easy
-" switching between files
-"let g:ctrlp_cmd = 'CtrlPMixed'
-
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-"let g:ctrlp_working_path_mode = 'ra'
-
-" Use a leader instead of the actual named binding
-"nmap <leader>p :CtrlP<cr>
-
-" Binding to clear CtrlP cache so that on next invocation of CtrlP it will
-" rescan all directories. Useful if a new file has been added since the last
-" time CtrlP was used
-"nmap <leader>rr :CtrlPClearAllCaches<cr>
-
-" Disable caching/always rescan files on every ctrlp invocation
-"let g:ctrlp_use_caching = 0
-
-" Easy bindings for its various modes
-"nmap <leader>bb :CtrlPBuffer<cr>
-"nmap <leader>bm :CtrlPMixed<cr>
-"nmap <leader>bs :CtrlPMRU<cr>
-
-" End CtrlP settings
-" -----------------
 
 
 " -----------------
