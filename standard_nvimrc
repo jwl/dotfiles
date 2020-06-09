@@ -25,51 +25,52 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'freeo/vim-kalisi'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
-"Plug 'croaky/vim-colors-github'
-Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'mdlerch/vim-tungsten'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/vim-color-forest-night'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'ekalinin/Dockerfile.vim'
-"Plug 'othree/yajs.vim'
-"Plug 'othree/es.next.syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'mattn/emmet-vim'
 "Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-pandoc/vim-pandoc-syntax'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Don't use coc.nvim and deoplete simultaneously
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 "Plug 'wokalski/autocomplete-flow'
 " For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'hzchirs/vim-material'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " ===== END Plug BUNDLES =========
@@ -155,8 +156,9 @@ augroup END
 set showmode
 set showcmd
 set ignorecase
-set number
-"set relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+"set number
+set number relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+"use plugin vim-numbertoggle to manage linenumbers
 
 " We don't need Vim to write a backup file; there are better ways to backup
 " than to rely on Vim
@@ -169,7 +171,10 @@ set backupcopy=yes
 
 " set pastetoggle to F2 so that when it's on and you paste, Vim doesn't
 " apply autoindenting and other crap which you don't need when pasting
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
+
+" https://dev.to/vintharas/5-minutes-vim-ctrlp-considered-harmful-48eg
+noremap <C-p> :<C-u>FZF<CR>
 
 " set 'd' to be delete and leader 'd' as cut.
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
@@ -272,6 +277,9 @@ autocmd FileType make set noexpandtab shiftwidth=2
 " Oh, and let's keep textwidth for all text files to 78 chars
 autocmd FileType text setlocal textwidth=80
 
+" set vertical line denoting 80 character line length
+"set colorcolumn=80
+
 " setup vim so that python files automatically use PEP8-compliant indentation
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 fileformat=unix nosmartindent
 "au BufNewFile,BufRead *.py
@@ -363,9 +371,9 @@ nnoremap <C-y> 3<C-y>
 
 " -----------------
 " NERDTree settings
-" F2 now used for opening NERDTree and F3 for taglist
-map <F2> :NERDTreeToggle<CR>
-imap <F2> <C-o>:NERDTreeToggle<CR>
+" F3 now used for opening NERDTree and F8 for taglist
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <C-o>:NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 let NERDTreeMinimalUI=1
@@ -403,11 +411,27 @@ noremap <space> za
 
 
 " -----------------
+" python3 nvim pyenv environment
+"if has('macunix')
+if system('uname') =~ "Darwin"
+  let g:python3_host_prog=expand('/Users/jleung/.pyenv/versions/nvim-3.7.3/bin/python')
+endif
+"if has('unix')
+if system('uname') =~ "Linux"
+  let g:python3_host_prog=expand('/home/jwl/.pyenv/versions/nvim-3.7.3/bin/python')
+endif
+
+" end python3 nvim pyenv environment
+" -----------------
+
+
+" -----------------
 " Vim-Airline settings
 "  Enable displaying buffers at the top of the viewable area with airline
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'short_path'
 
 " Enable powerline symbols (ie. the little arrows)
 let g:airline_powerline_fonts = 1
@@ -415,42 +439,6 @@ let g:airline_powerline_fonts = 1
 " End Vim-Airline settings
 " -----------------
 
-
-" -----------------
-" CtrlP Settings
-"
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll|class|gif|png|jpg|jpeg)$',
-\}
-
-" Set c-p as default shortcut and have it used Mixed instead of default
-" ie. search for files and search in already open files to facilitate easy
-" switching between files
-let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlPMixed'
-
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'ra'
-
-" Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
-
-" Binding to clear CtrlP cache so that on next invocation of CtrlP it will
-" rescan all directories. Useful if a new file has been added since the last
-" time CtrlP was used
-nmap <leader>rr :CtrlPClearAllCaches<cr>
-
-" Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-
-" End CtrlP settings
-" -----------------
 
 
 " -----------------
@@ -485,12 +473,17 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 " Begin ale settings
 let g:ale_linters = {
       \   'javascript': ['prettier'],
+      \   'typescript': ['prettier'],
       \   'css': ['prettier'],
       \}
 let g:ale_fixers = {
       \   'javascript': ['prettier'],
+      \   'typescript': ['prettier'],
       \   'css': ['prettier'],
       \}
+
+" run Prettier on save
+let g:ale_fix_on_save = 1
 
 " end ale settings
 "---------
@@ -537,12 +530,21 @@ let g:user_emmet_settings = {
 
 "------- end Emmet options
 
+"------- Split window keybinds
+nmap <leader>s :split<Return><C-w>w
+nmap <leader>v :vsplit<Return><C-w>w
+
+"------- end split window keybinds
+
 
 "------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
 set omnifunc=syntaxcomplete#Complete
+
+" Enable <TAB> for completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " enable java autocompletion? See https://www.reddit.com/r/neovim/comments/4m22p1/vimjavacomplete2_java_autocomplete_plugin/
 autocmd FileType java setlocal omnifunc=javacomplete#Complete

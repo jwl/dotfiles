@@ -5,9 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira-JLEUNML1_01"
-#ZSH_THEME="agnoster-suari01"
-#ZSH_THEME="agnoster"
+ZSH_THEME="agnoster-suari01"
+#ZSH_THEME="bira-JLEUNML1_01"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,17 +50,24 @@ ZSH_THEME="bira-JLEUNML1_01"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenv vi-mode)
+plugins=(git virtualenv)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/home/jwl/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 fpath=(~/.zsh/completion $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
+
+# Setup Go/Golang environment variables
+#export GOROOT="C:/Go"
+#export PATH=$PATH:"/cygdrive/c/Go/bin"
+#export GOPATH="C:/Go/go3d"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,21 +99,17 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
 
-# source '/home/jleung/.babun-docker/setup.sh'
-
 # enable vim keybindings
 bindkey -v
 
-# bind up and down arrow to searching history substring up and down
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
-
-# NVM initiation https://github.com/creationix/nvm
+# Iniitialize nvm config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# place this after nvm initialization to automatically switch node/npm when entering a directory with a .nvmrc file
+# Call nvm use automatically when in a directory with a .nvmrc file
+# https://github.com/nvm-sh/nvm
+# place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
   local node_version="$(nvm version)"
@@ -129,23 +131,20 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# end NVM initiation
 
-export PATH=/Users/jleung/.jenv/bin:/Users/jleung/.nvm/versions/node/v10.7.0/bin:/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/home/jwl/.jenv/bin:/home/jwl/.nvm/versions/node/v10.7.0/bin:/home/hwl/bin:/usr/local/bin:/home/jwl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/home/jwl/.pyenv/bin:$PATH"
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
-eval "$(jenv init -)"
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+#eval "$(jenv init -)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# set goprivate for Riot produced Golang modules
-export GOPRIVATE=*.riotgames.com
-
-# set $GOPATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

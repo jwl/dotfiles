@@ -56,13 +56,13 @@ set-option -g status-interval 1 # refresh status bar constantly
 setw -g monitor-activity on
 set-option -g visual-activity on
 
-# Make active pane more visible using new styling options
+# Make active pane more visible
 # https://github.com/tmux/tmux/issues/1689
 # https://github.com/tmux/tmux/wiki/FAQ#how-do-i-translate--fg--bg-and--attr-options-into--style-options<Paste>
 set -g window-status-current-style fg=black,bg=yellow
 set -g pane-active-border-style fg=green,bg=yellow
 
-# Automatically set window title and renumber windows upon any window closing
+# Automatically set window title and renumber windows on any window closing
 setw -g automatic-rename
 set-option -g renumber-windows on
 
@@ -82,10 +82,11 @@ bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
 bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
-bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+bind -n C-\\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
 
 # enable automatic restoring of session via tmux-resurrect and continuum upon starting up tmux
 set -g @continuum-restore 'on'
+
 
 ###############################
 # KEEP THIS BLOCK AT THE BOTTOM OF tmux.conf
@@ -103,6 +104,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-resurrect' # prefix + ctrl+s to save, prefix + ctrl+r to restore, https://github.com/tmux-plugins/tmux-resurrect
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # Initialize TMUX plugin manager (keep this line at the VERY BOTTOM of tmux.conf
 run '~/.tmux/plugins/tpm/tpm'
