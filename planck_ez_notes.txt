@@ -1,3 +1,3 @@
-https://configure.ergodox-ez.com/planck-ez/layouts/GZn7V/latest/2
+https://configure.ergodox-ez.com/planck-ez/layouts/qnonA/latest/3
 
 14 presses to swap animation to pulse red on keypress
