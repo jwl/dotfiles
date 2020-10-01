@@ -133,6 +133,7 @@ load-nvmrc
 
 export PATH=/Users/jleung/.jenv/bin:/Users/jleung/.nvm/versions/node/v10.7.0/bin:/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
