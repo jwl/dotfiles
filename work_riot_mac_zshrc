@@ -52,6 +52,7 @@ ZSH_THEME="bira-JLEUNML1_01"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git virtualenv vi-mode)
+plugins+=(zsh-nvm)
 
 # User configuration
 
@@ -102,12 +103,34 @@ bindkey -v
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-# NVM initiation https://github.com/creationix/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# place this after nvm initialization to automatically switch node/npm when entering a directory with a .nvmrc file
+export PATH=/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export M2_HOME=/usr/local/maven
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
+eval "$(jenv init -)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# set goprivate for Riot produced Golang modules
+export GOPRIVATE=*.riotgames.com
+
+# set $GOPATH
+export GOPATH=$HOME/go
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+
+# NVM initiation https://github.com/creationix/nvm
+# THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
   local node_version="$(nvm version)"
@@ -131,22 +154,3 @@ load-nvmrc
 
 # end NVM initiation
 
-export PATH=/Users/jleung/.jenv/bin:/Users/jleung/.nvm/versions/node/v10.7.0/bin:/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export M2_HOME=/usr/local/maven
-export M2=$M2_HOME/bin
-export PATH=$PATH:$M2
-eval "$(jenv init -)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# set goprivate for Riot produced Golang modules
-export GOPRIVATE=*.riotgames.com
-
-# set $GOPATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
