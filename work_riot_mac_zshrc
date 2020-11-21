@@ -124,6 +124,11 @@ export PATH=$PATH:$GOPATH/bin
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# direnv hook into shell
+# https://direnv.net/docs/hook.html
+eval "$(direnv hook zsh)"
 
 # NVM initiation https://github.com/creationix/nvm
 # THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
