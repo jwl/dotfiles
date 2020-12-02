@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 #alias docker_clean="docker rm $(docker ps -a -q)"
 
 
-export EDITOR=nvim
+export EDITOR=vim
 
 # source '/home/jleung/.babun-docker/setup.sh'
 
@@ -104,7 +104,7 @@ bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
 
-export PATH=/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/Users/jwl/bin:/usr/local/bin:/Users/jwl/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export M2_HOME=/usr/local/maven
@@ -114,21 +114,26 @@ export PATH=$PATH:$M2
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
 
-# set goprivate for Riot produced Golang modules
-export GOPRIVATE=*.riotgames.com
 
 # set $GOPATH
-export GOPATH=$HOME/go
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/go
+#export GOROOT=$HOME/go
+#export PATH=$PATH:$GOPATH/bin
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # direnv hook into shell
 # https://direnv.net/docs/hook.html
 #eval "$(direnv hook zsh)"
+
+
+
+[[ -s "/Users/jwl/.gvm/scripts/gvm" ]] && source "/Users/jwl/.gvm/scripts/gvm"
+
 
 # NVM initiation https://github.com/creationix/nvm
 # THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
@@ -158,4 +163,3 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # end NVM initiation
-
