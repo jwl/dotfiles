@@ -130,7 +130,8 @@ export PATH="/opt/homebrew/bin:$PATH"
 # https://direnv.net/docs/hook.html
 #eval "$(direnv hook zsh)"
 
-
+# load FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -s "/Users/jwl/.gvm/scripts/gvm" ]] && source "/Users/jwl/.gvm/scripts/gvm"
 
@@ -163,3 +164,4 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # end NVM initiation
+
