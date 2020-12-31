@@ -29,7 +29,7 @@ Plug 'vim-airline/vim-airline'
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
 Plug 'nanotech/jellybeans.vim'
@@ -156,7 +156,7 @@ augroup END
 set showmode
 set showcmd
 set ignorecase
-"set number
+set number
 set number relativenumber "See post on relative number lining http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 "use plugin vim-numbertoggle to manage linenumbers
 
@@ -499,7 +499,8 @@ let g:polyglot_disabled = ['python']
 "  enable system clipboard for vim, allowing copy/paste to and from the system
 "  clipboard
 " unnamed sets the * register, whereas unnamedplus sets to the + register. Presumably + is better? not entirely sure. See http://vim.wikia.com/wiki/Accessing_the_system_clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set clipboard=unnamed
 
 "---------
 
