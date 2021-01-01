@@ -42,7 +42,8 @@ Plug 'sainnhe/vim-color-forest-night'
 Plug 'romainl/Apprentice'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
-Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'habamax/vim-gruvbit'
 Plug 'ekalinin/Dockerfile.vim'
@@ -174,7 +175,9 @@ set backupcopy=yes
 "set pastetoggle=<F2>
 
 " https://dev.to/vintharas/5-minutes-vim-ctrlp-considered-harmful-48eg
-noremap <C-p> :<C-u>FZF<CR>
+" and https://pragmaticpineapple.com/improving-vim-workflow-with-fzf/
+"noremap <C-p> :<C-u>FZF<CR>
+noremap <C-p> :GFiles<CR>
 
 " set 'd' to be delete and leader 'd' as cut.
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
