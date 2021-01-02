@@ -9,7 +9,8 @@ else
 	let s:editor_root=expand("~/.vim")
 endif
 
-
+" Disable using ALE for LSP so that coc.nvim can do it instead
+ let g:ale_disable_lsp = 1
 
 " Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -26,8 +27,13 @@ Plug 'freeo/vim-kalisi'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
-"Plug 'ctrlpvim/ctrlp.vim'
+
+" ALE and coc.nvim for linting and diagnostics
+" https://github.com/dense-analysis/ale#faq-coc-nvim
+" https://github.com/neoclide/coc.nvim
 Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'scrooloose/nerdtree'
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeetsukumaran/vim-buffergator'
@@ -53,7 +59,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'mattn/emmet-vim'
 "Plug 'wavded/vim-stylus'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-pandoc/vim-pandoc-syntax'
 " Don't use coc.nvim and deoplete simultaneously
 "if has('nvim')
@@ -543,19 +548,19 @@ nmap <leader>v :vsplit<Return><C-w>w
 
 "------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:neosnippet#enable_completed_snippet = 1
-set omnifunc=syntaxcomplete#Complete
+"let g:deoplete#enable_at_startup = 1
+"let g:neosnippet#enable_completed_snippet = 1
+"set omnifunc=syntaxcomplete#Complete
 
 " Enable <TAB> for completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " enable java autocompletion? See https://www.reddit.com/r/neovim/comments/4m22p1/vimjavacomplete2_java_autocomplete_plugin/
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = []
-let g:deoplete#file#enable_buffer_path = 1
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"let g:deoplete#omni_patterns = {}
+"let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+"let g:deoplete#sources = {}
+"let g:deoplete#sources._ = []
+"let g:deoplete#file#enable_buffer_path = 1
 
 "------- End deoplete.nvim options
