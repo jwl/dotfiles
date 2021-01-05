@@ -118,9 +118,11 @@ eval "$(pyenv virtualenv-init -)"
 export GOPRIVATE=*.riotgames.com
 
 # set $GOPATH
-export GOPATH=$HOME/go
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+# old golang paths?
+#export GOPATH=$HOME/go
+#export GOROOT=/usr/local/go
+#export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:/usr/local/go/bin"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
