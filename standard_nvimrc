@@ -9,7 +9,7 @@ else
 	let s:editor_root=expand("~/.vim")
 endif
 
-" Disable using ALE for LSP so that coc.nvim can do it instead
+" Disable using ALE for LSP so that coc.nvim or built in LSP server can do it instead
  let g:ale_disable_lsp = 1
 
 " Begin vim-plug configuration, see https://github.com/junegunn/vim-plug
@@ -21,36 +21,41 @@ endif
 call plug#begin()
 
 " ===== START Plug BUNDLES =======
+
+" == Themes
 Plug 'altercation/vim-colors-solarized'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'freeo/vim-kalisi'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'mdlerch/vim-tungsten'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'junegunn/seoul256.vim'
+Plug 'habamax/vim-gruvbit'
+Plug 'romainl/Apprentice'
+Plug 'NLKNguyen/papercolor-theme'
+
+" == Functionality
 Plug 'vim-airline/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
 
 " ALE and coc.nvim for linting and diagnostics
 " https://github.com/dense-analysis/ale#faq-coc-nvim
 " https://github.com/neoclide/coc.nvim
 Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'xolox/vim-misc'
-Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'mdlerch/vim-tungsten'
-Plug 'sainnhe/vim-color-forest-night'
-Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/vim-color-forest-night'
-Plug 'romainl/Apprentice'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'habamax/vim-gruvbit'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
@@ -58,11 +63,17 @@ Plug 'davidhalter/jedi-vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'hzchirs/vim-material'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
+" common configurations for the NVIM LSP client
+Plug 'neovim/nvim-lspconfig'
+" Extensions to built-in LSP, for example, providing type inlay hints
+Plug 'nvim-lua/lsp_extensions.nvim'
+" Autocompletion framework for built-in LSP
+Plug 'nvim-lua/completion-nvim'
 
 " ===== END Plug BUNDLES =========
 call plug#end()
@@ -74,7 +85,7 @@ call plug#end()
 
 " Enable filetype detection
 filetype plugin indent on
-syntax on
+syntax enable
 
 " set hidden hides buffers instead of closing them. This means you can have
 " unwritten changes to a file and open a new file using :e without being
@@ -359,6 +370,15 @@ imap kj <Esc>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" Enable <TAB> for completion and navigation through popup menus
+inoremap <expr> <TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" use <Tab> as trigger keys
+imap <Tab> <Plug>(completion_smart_tab)
+imap <S-Tab> <Plug>(completion_smart_s_tab)
+
+
 " End Keystrokes
 " -----------------
 
@@ -538,14 +558,55 @@ nmap <leader>v :vsplit<Return><C-w>w
 "------- end split window keybinds
 
 
+" ------ Rust and Rust Analyzer config
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing extra messages when using completion
+set shortmess+=c
+
+" Configure LSP
+" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+-- Enable rust_analyzer
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
+EOF
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+" ------ End Rust and Rust Analyzer config
+
+
 "------- Begin deoplete.nvim options (code completion), https://github.com/Shougo/deoplete.nvim
 " Use deoplete.
 "let g:deoplete#enable_at_startup = 1
 "let g:neosnippet#enable_completed_snippet = 1
 "set omnifunc=syntaxcomplete#Complete
 
-" Enable <TAB> for completion
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " enable java autocompletion? See https://www.reddit.com/r/neovim/comments/4m22p1/vimjavacomplete2_java_autocomplete_plugin/
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
