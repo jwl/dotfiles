@@ -91,6 +91,8 @@ source $ZSH/oh-my-zsh.sh
 #alias drmi="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
 #alias docker_clean="docker rm $(docker ps -a -q)"
 
+alias t="todo.sh -a"
+
 
 export EDITOR=nvim
 
