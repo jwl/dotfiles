@@ -104,7 +104,7 @@ alias t="todo.sh -a"
 
 # End personal aliase
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # enable vim keybindings
 bindkey -v

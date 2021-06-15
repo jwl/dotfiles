@@ -31,6 +31,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'mdlerch/vim-tungsten'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'gruvbox-community/gruvbox'
+Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'junegunn/seoul256.vim'
 Plug 'habamax/vim-gruvbit'
@@ -114,6 +115,7 @@ endif
 "let g:material_style='oceanic'
 "let g:airline_theme='material'
 colorscheme gruvbox
+"colorscheme gruvbox-flat
 set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
