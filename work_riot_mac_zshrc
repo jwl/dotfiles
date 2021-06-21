@@ -53,6 +53,7 @@ ZSH_THEME="bira-JLEUNML1_01"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git virtualenv vi-mode)
 plugins+=(zsh-nvm)
+plugins+=(zsh-autosuggestions)
 
 # User configuration
 
