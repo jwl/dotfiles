@@ -107,9 +107,9 @@ set backspace=indent,eol,start
 " Set default color scheme
 set t_Co=256
 if has('gui_running')
-set background=dark
+set background=light
 else
-set background=dark
+set background=light
 endif
 "colorscheme vim-material
 "let g:material_style='oceanic'
@@ -188,6 +188,9 @@ set backupcopy=yes
 " and https://pragmaticpineapple.com/improving-vim-workflow-with-fzf/
 "noremap <C-p> :<C-u>FZF<CR>
 noremap <C-p> :GFiles<CR>
+" Note that file preview window syntax highlight theme is determined by
+" ~/.config/bat/config and you can get a list of all themes with 
+" `bat --list-themes`
 
 " set 'd' to be delete and leader 'd' as cut.
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
