@@ -96,6 +96,9 @@ export PATH=$PATH:"/cygdrive/c/Go/bin"
 
 alias t="todo.sh -a"
 
+# load FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export EDITOR=vim
 
 source '/home/jleung/.babun-docker/setup.sh'

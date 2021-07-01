@@ -72,6 +72,11 @@ fi
 
 fpath=(~/.zsh/completion $fpath)
 
+# initialize pyenv and pyenv-virtualenv, this must be done BEFORE initializing oh-my-zsh
+# see https://github.com/pyenv/pyenv/issues/1915
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 source $ZSH/oh-my-zsh.sh
 
 
@@ -134,10 +139,6 @@ export PATH=$PATH:$GOPATH/bin
 # direnv hook into shell
 # https://direnv.net/docs/hook.html
 #eval "$(direnv hook zsh)"
-
-# initialize pyenv and pyenv-virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
