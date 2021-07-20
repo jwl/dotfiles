@@ -69,6 +69,23 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# $PATH stuff
+export PATH=/Users/jwl/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="/opt/homebrew/bin:$PATH"
+
+# initialize pyenv and pyenv-virtualenv
+# note that this must come BEFORE oh-my-zsh initialization
+# https://github.com/pyenv/pyenv/issues/1915#issuecomment-862773248
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 
 fpath=(~/.zsh/completion $fpath)
 
@@ -113,16 +130,6 @@ bindkey -v
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-# $PATH stuff
-export PATH=/Users/jwl/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="/opt/homebrew/bin:$PATH"
-
 # golang paht stuff
 # https://medium.com/@krisma/gopath-and-goroot-set-up-in-mac-and-in-vscode-cf86d8503e57
 # but set goroot to /usr/local/go instead
@@ -134,10 +141,6 @@ export PATH=$PATH:$GOPATH/bin
 # direnv hook into shell
 # https://direnv.net/docs/hook.html
 #eval "$(direnv hook zsh)"
-
-# initialize pyenv and pyenv-virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
