@@ -60,7 +60,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
 Plug 'leafgarland/typescript-vim'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -575,7 +575,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 " Configure LSP
-" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+" https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 
 -- nvim_lsp object
@@ -597,6 +597,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+-- Python LSP
+require'lspconfig'.pyright.setup{}
+
 EOF
 
 " Enable type inlay hints

@@ -60,9 +60,33 @@ plugins+=(zsh-autosuggestions)
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export PATH=/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export M2_HOME=/usr/local/maven
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
+eval "$(jenv init -)"
+
+# set goprivate for Riot produced Golang modules
+export GOPRIVATE=*.riotgames.com
+
+# set $GOPATH
+# old golang paths?
+#export GOPATH=$HOME/go
+#export GOROOT=/usr/local/go
+#export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:/usr/local/go/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+
 # Initialize pyenv, note that this must come BEFORE you initialize oh-my-zsh
 # see https://github.com/pyenv/pyenv/issues/1915
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
+#eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 
@@ -112,28 +136,6 @@ bindkey -v
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-
-export PATH=/Users/jleung/bin:/usr/local/bin:/Users/jleung/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export M2_HOME=/usr/local/maven
-export M2=$M2_HOME/bin
-export PATH=$PATH:$M2
-eval "$(jenv init -)"
-
-# set goprivate for Riot produced Golang modules
-export GOPRIVATE=*.riotgames.com
-
-# set $GOPATH
-# old golang paths?
-#export GOPATH=$HOME/go
-#export GOROOT=/usr/local/go
-#export PATH=$PATH:$GOPATH/bin
-export PATH="$PATH:/usr/local/go/bin"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
 
 # direnv hook into shell
 # https://direnv.net/docs/hook.html

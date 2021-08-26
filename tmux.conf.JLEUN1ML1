@@ -103,6 +103,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-resurrect' # prefix + ctrl+s to save, prefix + ctrl+r to restore, https://github.com/tmux-plugins/tmux-resurrect
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # Initialize TMUX plugin manager (keep this line at the VERY BOTTOM of tmux.conf
 run '~/.tmux/plugins/tpm/tpm'
