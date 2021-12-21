@@ -112,6 +112,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias t="todo.sh -a"
 
+# use exa as a better li
+alias ll='exa --long --group-directories-first --header --git'
+
 # End personal aliase
 
 export EDITOR=nvim
