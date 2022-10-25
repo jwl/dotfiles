@@ -57,7 +57,7 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ekalinin/Dockerfile.vim'
