@@ -31,6 +31,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'mdlerch/vim-tungsten'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'gruvbox-community/gruvbox'
+Plug 'Tsuzat/NeoSolarized.nvim', { 'branch': 'master'}
 Plug 'catppuccin/nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'eddyekofo94/gruvbox-flat.nvim'
@@ -47,7 +48,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " ALE and coc.nvim for linting and diagnostics
 " https://github.com/dense-analysis/ale#faq-coc-nvim
 " https://github.com/neoclide/coc.nvim
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'scrooloose/nerdtree'
@@ -519,19 +520,19 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " ---------
 " Begin ale settings
-let g:ale_linters = {
-      \   'javascript': ['prettier'],
-      \   'typescript': ['prettier'],
-      \   'css': ['prettier'],
-      \}
-let g:ale_fixers = {
-      \   'javascript': ['prettier'],
-      \   'typescript': ['prettier'],
-      \   'css': ['prettier'],
-      \}
+"let g:ale_linters = {
+      "\   'javascript': ['prettier'],
+      "\   'typescript': ['prettier'],
+      "\   'css': ['prettier'],
+      "\}
+"let g:ale_fixers = {
+      "\   'javascript': ['prettier'],
+      "\   'typescript': ['prettier'],
+      "\   'css': ['prettier'],
+      "\}
 
 " run Prettier on save
-let g:ale_fix_on_save = 1
+"let g:ale_fix_on_save = 1
 
 " end ale settings
 "---------
