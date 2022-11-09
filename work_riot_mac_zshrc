@@ -125,7 +125,9 @@ source $ZSH/oh-my-zsh.sh
 alias t="todo.sh -a"
 
 # use exa as a better ls
+alias ls='exa --group-directories-first'
 alias ll='exa --long --group-directories-first --header --git'
+alias la='exa -la --no-user --group-directories-first --time-style long-iso --header --git'
 
 export EDITOR=nvim
 
