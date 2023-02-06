@@ -179,3 +179,10 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 # End Nix
+
+
+# Begin riot-data GetAWS shortcut config
+# https://gh.riotgames.com/riot-data/airflow-data
+source ~/PXPVis_workspace/airflow-data/automation/getaws/getaws
+
+# End riot-data config
