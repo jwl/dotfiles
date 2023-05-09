@@ -7,6 +7,9 @@ unbind-key C-b
 unbind r
 bind-key r source-file ~/.tmux.conf \; display "Config reloaded!"
 
+# Show an icon when the prefix is active (ie. ctrl-a)
+# https://arcolinux.com/everything-you-need-to-know-about-tmux-plugins-manager/
+
 # setup copy and paste hotkeys as described here:
 # http://jasonwryan.com/blog/2011/06/07/copy-and-paste-in-tmux/
 unbind [
