@@ -146,11 +146,6 @@ bindkey "^[[B" history-substring-search-down
 [[ -s "/Users/jwl/.gvm/scripts/gvm" ]] && source "/Users/jwl/.gvm/scripts/gvm"
 
 
-# NVM initiation https://github.com/creationix/nvm
-# THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 # place this after nvm initialization!
 #autoload -U add-zsh-hook
 #load-nvmrc() {
@@ -174,3 +169,4 @@ bindkey "^[[B" history-substring-search-down
 #load-nvmrc
 
 # end NVM initiation
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
