@@ -127,6 +127,11 @@ bindkey -v
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
+
+# source getaws for airflow-data https://gh.riotgames.com/riot-data/airflow-data
+source /Users/jleung/gh.riotgames.com/airflow-data/automation/getaws/getaws
+
+
 # golang paht stuff
 # https://medium.com/@krisma/gopath-and-goroot-set-up-in-mac-and-in-vscode-cf86d8503e57
 # but set goroot to /usr/local/go instead
