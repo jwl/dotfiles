@@ -2,3 +2,26 @@ theme = "gruvbox_light"
 
 [editor]
 line-number = "relative"
+
+[editor.statusline]
+right = ["version-control", "diagnostics", "selections", "position", "file-encoding", "file-type"]
+
+[editor.indent-guides]
+render = true
+character = "╎"
+skip-levels = 1
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
