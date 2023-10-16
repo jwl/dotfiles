@@ -40,6 +40,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'habamax/vim-gruvbit'
 Plug 'romainl/Apprentice'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'projekt0n/caret.nvim'
 
 " == Functionality
 Plug 'vim-airline/vim-airline'
