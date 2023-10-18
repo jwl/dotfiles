@@ -4,7 +4,9 @@ theme = "gruvbox_light"
 line-number = "relative"
 
 [editor.statusline]
+left = ["mode", "spinner", "file-base-name"]
 right = ["version-control", "diagnostics", "selections", "position", "file-encoding", "file-type"]
+separator = "|"
 
 [editor.indent-guides]
 render = true
