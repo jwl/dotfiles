@@ -170,3 +170,6 @@ bindkey "^[[B" history-substring-search-down
 
 # end NVM initiation
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Created by `pipx` on 2024-05-27 21:02:48
+export PATH="$PATH:/Users/jwl/.local/bin"
