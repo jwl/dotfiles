@@ -1,3 +1,3 @@
 #!/bin/bash
 
-tmux split-window -h -p 33
+tmux split-window -h -l 33%
