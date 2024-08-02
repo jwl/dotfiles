@@ -79,6 +79,10 @@ export PATH="$HOME/.poetry/bin:$PATH"
 #export PATH="$PATH:/usr/local/go/bin"
 export PATH="/opt/homebrew/bin:$PATH"
 
+# add go/golang to $PATH
+export PATH="/usr/local/go/bin":$PATH
+export PATH="$HOME/go/bin:$PATH"
+
 # initialize pyenv and pyenv-virtualenv
 # note that this must come BEFORE oh-my-zsh initialization
 # https://github.com/pyenv/pyenv/issues/1915#issuecomment-862773248
