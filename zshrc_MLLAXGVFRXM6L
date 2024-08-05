@@ -150,6 +150,17 @@ source /Users/jleung/gh.riotgames.com/airflow-data/automation/getaws/getaws
 [[ -s "/Users/jleung/.gvm/scripts/gvm" ]] && source "/Users/jleung/.gvm/scripts/gvm"
 
 
+# helper function to open yazi in the current working directory
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
 # NVM initiation https://github.com/creationix/nvm
 # THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
 #export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
