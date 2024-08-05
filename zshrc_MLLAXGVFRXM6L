@@ -112,9 +112,9 @@ source $ZSH/oh-my-zsh.sh
 alias t="todo.sh -a"
 
 # use exa as a better li
-alias ls='exa --group-directories-first'
-alias ll='exa --long --group-directories-first --header --git'
-alias la='exa -la --no-user --group-directories-first --time-style long-iso --header --git'
+alias ls='eza --group-directories-first'
+alias ll='eza --long --group-directories-first --header --git'
+alias la='eza -la --no-user --group-directories-first --time-style long-iso --header --git'
 
 # End personal aliase
 
