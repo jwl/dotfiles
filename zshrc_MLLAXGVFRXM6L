@@ -160,6 +160,9 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
+# initialize VAULT_ADDR to use vault, vault.security.riotgames.io
+export VAULT_ADDR=https://vault.security.riotgames.io
+
 
 # NVM initiation https://github.com/creationix/nvm
 # THIS MUST GO AT THE END OF .ZSHRC, see https://stackoverflow.com/a/47883587
