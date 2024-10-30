@@ -54,7 +54,7 @@ ZSH_THEME="bira-JLEUNML1_01"
 # https://medium.com/swlh/set-up-a-shell-python-development-environment-from-scratch-part-1-zsh-vim-configuration-8b6c2cc3fb1b
 plugins=(git virtualenv vi-mode)
 # plugins+=(zsh-nvm)
-# plugins+=(zsh-autosuggestions)
+plugins+=(zsh-autosuggestions)
 
 # User configuration
 
