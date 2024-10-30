@@ -54,7 +54,7 @@ ZSH_THEME="bira-JLEUNML1_01"
 # https://medium.com/swlh/set-up-a-shell-python-development-environment-from-scratch-part-1-zsh-vim-configuration-8b6c2cc3fb1b
 plugins=(git virtualenv nvm)
 # plugins+=(zsh-nvm)
-# plugins+=(zsh-autosuggestions)
+plugins+=(zsh-autosuggestions)
 
 # User configuration
 
@@ -78,6 +78,7 @@ export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 
 # initialize pyenv and pyenv-virtualenv

@@ -50,3 +50,5 @@ formatter = { command = 'npx', args = ["prettier", "--parser", "json"] }
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
+file-types = ["go"]
+roots = ["Gopkg.toml", "go.mod"]
