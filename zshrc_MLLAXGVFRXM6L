@@ -127,7 +127,7 @@ alias la='eza -la --no-user --group-directories-first --time-style long-iso --he
 
 # End personal aliase
 
-export EDITOR=nvim
+export EDITOR=hx
 
 # enable vim keybindings
 bindkey -v
@@ -141,13 +141,19 @@ bindkey "^[[B" history-substring-search-down
 source /Users/jleung/gh.riotgames.com/airflow-data/automation/getaws/getaws
 
 
-# golang paht stuff
+# golang path stuff
 # https://medium.com/@krisma/gopath-and-goroot-set-up-in-mac-and-in-vscode-cf86d8503e57
 # but set goroot to /usr/local/go instead
 #export GOROOT=/usr/local/go/ # default 1.15 intel golang
 #export GOPATH=${HOME}/go
 #export PATH=$PATH:$GOROOT/bin
 #export PATH=$PATH:$GOPATH/bin
+
+# riot go path
+export GOPRIVATE=*.riotgames.com
+
+# vault config for rcluster-console development
+VAULT_ADDR==https://vault.security.riotgames.io
 
 # direnv hook into shell
 # https://direnv.net/docs/hook.html

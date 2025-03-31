@@ -52,3 +52,4 @@ auto-format = true
 formatter = { command = "goimports" }
 file-types = ["go"]
 roots = ["Gopkg.toml", "go.mod"]
+language-servers = [ "gopls" ]
