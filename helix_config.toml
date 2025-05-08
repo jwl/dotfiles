@@ -1,5 +1,6 @@
 # theme = "serika-light"
 # theme = "solarized_light"
+# theme = "gruvbox_material_light_hard"
 theme = "gruvbox_light"
 
 [editor]
