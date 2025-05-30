@@ -1,3 +1,8 @@
+[[language]]
+name="python"
+auto-format = true
+formatter = {command = 'black', args = ["--quiet", "-"]}
+
 [language-server.pylsp.config.pylsp]
 plugins.ruff.enabled = true
 plugins.black.enabled = true
