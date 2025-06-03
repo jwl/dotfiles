@@ -28,7 +28,7 @@ d = "delete_selection_noyank"
 A-c = "change_selection"
 c = "change_selection_noyank"
 C-s = ":w" # for easy saving
-C-o = ":open ~/.config/helix/config.toml" # Maps Ctrl-o to opening of the helix config file
+C-o = "config-reload" # Maps Ctrl-o to opening of the helix config file
 
 [keys.insert]
 C-c = "normal_mode"
