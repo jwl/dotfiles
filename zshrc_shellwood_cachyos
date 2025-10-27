@@ -18,5 +18,7 @@ alias la='eza -la --no-user --group-directories-first --time-style long-iso --he
 # alias helix to hx
 alias hx='helix'
 
+# $PATH stuff
+export PATH="$PATH:/home/jwl/bin"
 
 
