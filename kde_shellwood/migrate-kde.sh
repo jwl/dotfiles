@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # === CONFIGURATION ===
-DOTFILES_DIR=~/dotfiles            # path to your dotfiles repo
+DOTFILES_DIR=~/dotfiles/kde_shellwood           # path to your dotfiles repo
 BACKUP_DIR=~/kde-config-backup-$(date +%Y%m%d%H%M%S)
 EXCLUDE_FILES=("kdeconnect")       # sensitive dirs/files to skip
 
