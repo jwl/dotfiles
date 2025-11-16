@@ -1,7 +1,7 @@
 # Detect if running inside a Toolbx/Distrobox container
 if grep -q 'toolbox' /run/.containerenv 2>/dev/null || grep -q 'distrobox' /run/.containerenv 2>/dev/null; then
     # Inside a Toolbx/Distrobox container
-    source ~/.zshrc_toolbx
+    source ~/.zshrc_container
 else
     # Regular (host) environment
     source ~/.zshrc_host
