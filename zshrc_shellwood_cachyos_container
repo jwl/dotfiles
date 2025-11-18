@@ -1,26 +1,14 @@
 #!/bin/bash
 
 # Plugins
-# Choose correct autosuggestions path depending on whether we're in a distrobox container
-if [[ -f /run/.containerenv ]]; then
-    # Inside distrobox
-    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-    # On host (CachyOS)
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # PATH configuration
-export PATH="/home/jwl/bin:/home/jwl/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 
 
 # ALIAS stuff
-# Only set the helix alias if NOT inside a distrobox container
-# Because in Fedora, `helix` isn't actually bound to anything
-# but `hx` is!
-if [[ ! -f /run/.containerenv ]]; then
-    alias hx='helix'
-fi
+alias hx='helix'
 
 # use exa as a better ls
 alias ls='eza --group-directories-first'
