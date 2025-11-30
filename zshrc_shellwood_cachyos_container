@@ -10,10 +10,13 @@ export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 # ALIAS stuff
 alias hx='helix'
 
-# use exa as a better ls
-alias ls='eza --group-directories-first'
-alias ll='eza --long --group-directories-first --header --git'
-alias la='eza -la --no-user --group-directories-first --time-style long-iso --header --git'
+# Define eza aliases only if eza is installed
+if command -v eza >/dev/null 2>&1; then
+    alias ls='eza --group-directories-first'
+    alias ll='eza --long --group-directories-first --header --git'
+    alias la='eza -la --no-user --group-directories-first --time-style long-iso --header --git'
+fi
+
 
 # Set EDITOR
 export EDITOR=helix
