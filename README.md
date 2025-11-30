@@ -1,2 +1,1 @@
-# dotfiles
-Common config files
+# Migrated to https://codeberg.org/jobias/dotfiles
